@@ -1,0 +1,38 @@
+#Nav_style{
+  background-color: #95EEF8;
+}
+
+
+nav{
+	height:76px;
+	font-size:20px;
+	text-align:center;
+	letter-spacing:1.5px;
+}
+
+ul {
+	list-style: none;
+}
+
+nav ul{
+	list-style:none;
+	padding:18px;
+}
+
+nav ul li{
+	display:inline;
+	padding: 0 10px 0 10px;
+}
+
+body{
+  background-color: #DEDEDE;
+}
+
+#main_heading{
+  color: #EF6527;
+  font-weight: bold;
+}
+
+#Main_Footer{
+  background-color: #C0E941;
+}
