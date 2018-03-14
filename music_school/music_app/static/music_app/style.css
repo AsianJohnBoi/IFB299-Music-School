@@ -1,13 +1,13 @@
 #Nav_style{
-  background-color: #95EEF8;
+  background-color: #00B2AB;
 }
 
-
 nav{
-	height:76px;
-	font-size:20px;
+	height:60px;
+	font-size:24px;
 	text-align:center;
 	letter-spacing:1.5px;
+  font-weight: bold;
 }
 
 ul {
@@ -25,14 +25,14 @@ nav ul li{
 }
 
 body{
-  background-color: #DEDEDE;
+  background-color: #6B554B;
 }
 
 #main_heading{
-  color: #EF6527;
+  color: #E56B35;
   font-weight: bold;
 }
 
 #Main_Footer{
-  background-color: #C0E941;
+  background-color: #B2907E;
 }
