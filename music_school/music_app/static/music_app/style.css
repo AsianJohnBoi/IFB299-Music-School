@@ -1,3 +1,6 @@
+.portfolio-item {
+  margin-bottom: 30px;
+}
 #Nav_style{
   background-color: #00B2AB;
 }
@@ -28,11 +31,12 @@ body{
   background-color: #6B554B;
 }
 
-#main_heading{
-  color: #E56B35;
+h1, h2{
+  color: #E56B35 !important;
   font-weight: bold;
+  text-align: center;
 }
 
 #Main_Footer{
-  background-color: #B2907E;
+  background-color: #6B554B;
 }
