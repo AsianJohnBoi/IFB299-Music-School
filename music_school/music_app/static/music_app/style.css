@@ -4,7 +4,12 @@
 #Nav_style{
   background-color: #00B2AB;
 }
-
+a {
+  color:#E56B35;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
 nav{
 	height:60px;
 	font-size:24px;
@@ -23,6 +28,7 @@ nav ul{
 }
 
 nav ul li{
+  color:#E56B35 !important ;
 	display:inline;
 	padding: 0 10px 0 10px;
 }
