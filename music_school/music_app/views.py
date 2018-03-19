@@ -16,3 +16,6 @@ def contact(request):
 
 def pricing(request):
     return render(request, 'music_app/pricing.html')
+
+def reg_form(request):
+    return render(request, 'music_app/reg_form.html')
