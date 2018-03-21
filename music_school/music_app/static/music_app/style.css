@@ -4,6 +4,10 @@
 #Nav_style{
   background-color: #00B2AB;
 }
+#register{
+  margin-left: 20%;
+  margin-right: 20%;
+}
 a {
   color:#E56B35;
   text-decoration: none;

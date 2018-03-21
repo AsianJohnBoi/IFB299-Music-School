@@ -25,101 +25,99 @@
 
 </head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
-      <div class="container">
-        <a id="logo" class="navbar-brand" href="{% url 'index' %}">Pinelands M.S</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'index' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
+  <!-- Navigation -->
+  <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <div>
+      <a id="logo" class="navbar-brand" href="{% url 'index' %}">Pinelands M.S</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div>
       <h1 class="my-4">Register Please</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <h3>Complete the details below to sign up for a new account.</h3>
+        <h3>Passwords must have a minimum of 8 characters.</h3>
+
+        <!-- Contact Form -->
+        <form action="../controller/registration_process.php" method="post" onSubmit="return onSubmit()">
+          <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter your First Name"/><br />
+          <input type="text" class="form-control" name="lastName" id="lastname" placeholder="Enter your Last Name"/><br />
+          <div class="form-group">
+            <select class="form-control" name="gender" id="gender">
+              <option value="" selected disabled>Please select Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <input type="text" class="form-control"
+          name="age" id="age" placeholder="Enter your Age"/><br />
+          <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email*"/><br />
+          <input type="text" class="form-control" name="address" id="address" placeholder="Enter your Address" /><br />
+          <div class="form-group">
+            <select class="form-control" name="skill_level" id="skill_level">
+              <option value="" selected disabled>Please select you're Skill Level</option>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Expert</option>
+            </select>
+          </div>
+          <input type="text" class="form-control" name="username" id="username" maxlength="20" placeholder="Enter your Username*"/><br />
+          <input type="password" class="form-control"  id="password" name="password" maxlength="18" placeholder="Password max length 18*" required pattern=".{8,}"/><br />
+          <p><input class="btn btn-primary" id="sendMessageButton" type="submit" name="register" value="Register" /></p>
+          <p>Please <a href="login_form.php">login</a> if you already have an account.</p>
+        </form>
       </div>
+    </div>
 
-      <!-- Contact Form -->
-      <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-      <div class="row">
-        <div class="col-lg-8 mb-4">
-          <h3>Send us a Message</h3>
-          <form name="sentMessage" id="contactForm" novalidate>
-            <div class="control-group form-group">
-              <div class="controls">
-                <label>Full Name:</label>
-                <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-                <p class="help-block"></p>
-              </div>
-            </div>
-            <div class="control-group form-group">
-              <div class="controls">
-                <label>Phone Number:</label>
-                <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-              </div>
-            </div>
-            <div class="control-group form-group">
-              <div class="controls">
-                <label>Email Address:</label>
-                <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-              </div>
-            </div>
-            <div class="control-group form-group">
-              <div class="controls">
-                <label>Message:</label>
-                <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-              </div>
-            </div>
-            <div id="success"></div>
-            <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
-          </form>
-        </div>
 
-      </div>
-      <!-- /.row -->
+  </div>
+  <!-- /.container -->
 
+  <!-- Footer -->
+  <footer class="py-5 ">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
     </div>
     <!-- /.container -->
+  </footer>
 
-    <!-- Footer -->
-    <footer class="py-5 ">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'music_app/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+  <script type="text/javascript" src="js/registration_validate.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'music_app/jquery/jquery.min.js'%}"></script>
-    <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
-
-    <!-- Contact form JavaScript -->
-    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-    <script src="{% static 'music_app/jqBootstrapValidation.js'%}"></script>
-    <script src="{% static 'music_app/contact_me.js' %}"></script>
+  <!-- Contact form JavaScript -->
+  <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+  <script src="{% static 'music_app/jqBootstrapValidation.js'%}"></script>
+  <script src="{% static 'music_app/contact_me.js' %}"></script>
 
 
-  </body>
+</body>
 
 </html>
