@@ -53,63 +53,63 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container">
-    <div>
-      <h1 class="my-4">Register Please</h1>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 mb-4">
-        <h3>Complete the details below to sign up for a new account.</h3>
-        <h3>Passwords must have a minimum of 8 characters.</h3>
-
-        <!-- Contact Form -->
-        <form action="../controller/registration_process.php" method="post" onSubmit="return onSubmit()">
-          <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter your First Name"/><br />
-          <input type="text" class="form-control" name="lastName" id="lastname" placeholder="Enter your Last Name"/><br />
-          <div class="form-group">
-            <select class="form-control" name="gender" id="gender">
-              <option value="" selected disabled>Please select Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <input type="text" class="form-control" name="age" id="age" placeholder="Enter your Age"/><br />
-          <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email*"/><br />
-          <input type="text" class="form-control" name="address" id="address" placeholder="Enter your Address" /><br />
-          <div class="form-group">
-            <select class="form-control" name="skill_level" id="skill_level">
-              <option value="" selected disabled>Please select you're Skill Level</option>
-              <option>Beginner</option>
-              <option>Intermediate</option>
-              <option>Expert</option>
-            </select>
-          </div>
-          <input type="text" class="form-control" name="username" id="username" maxlength="20" placeholder="Enter your Username*"/><br />
-          <input type="password" class="form-control"  id="password" name="password" maxlength="18" placeholder="Password max length 18*" required pattern=".{8,}"/><br />
-          <p><input class="btn btn-primary" id="sendMessageButton" type="submit" name="register" value="Register" /></p>
-          <p>Please <a href="login_form.php">login</a> if you already have an account.</p>
-        </form>
-      </div>
-    </div>
-
-
-  </div>
-  <!-- /.container -->
-
-  <!-- Footer -->
-  <footer class="py-5 ">
+  <section class="page-section about-heading">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+      <div class="about-heading-content">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 mx-auto">
+            <div class="bg-faded rounded p-5">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper"></span>
+                <span class="my-4">Register Please</span>
+                <!-- Contact Form -->
+                <form action="../controller/registration_process.php" method="post" onSubmit="return onSubmit()">
+                  <input type="text" class="form-control" name="firstName" id="firstname" placeholder="Enter your First Name"/><br />
+                  <input type="text" class="form-control" name="lastName" id="lastname" placeholder="Enter your Last Name"/><br />
+                  <div class="form-group">
+                    <select class="form-control" name="gender" id="gender">
+                      <option value="" selected disabled>Please select Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <input type="text" class="form-control" name="age" id="age" placeholder="Enter your Age"/><br />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email*"/><br />
+                  <input type="text" class="form-control" name="address" id="address" placeholder="Enter your Address" /><br />
+                  <div class="form-group">
+                    <select class="form-control" name="skill_level" id="skill_level">
+                      <option value="" selected disabled>Please select you're Skill Level</option>
+                      <option>Beginner</option>
+                      <option>Intermediate</option>
+                      <option>Expert</option>
+                    </select>
+                  </div>
+                  <input type="text" class="form-control" name="username" id="username" maxlength="20" placeholder="Enter your Username*"/><br />
+                  <input type="password" class="form-control"  id="password" name="password" maxlength="18" placeholder="Password max length 18*" required pattern=".{8,}"/><br />
+                  <p><input class="btn btn-primary" id="sendMessageButton" type="submit" name="register" value="Register" /></p>
+                  <p>Please <a href="login_form.php">login</a> if you already have an account.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'music_app/jquery.min.js'%}"></script>
-  <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
-  <script type="text/javascript" src="js/registration_validate.js"></script>
+      <!-- Footer -->
+      <footer class="py-5 ">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+        </div>
+        <!-- /.container -->
+      </footer>
 
-</body>
+      <!-- Bootstrap core JavaScript -->
+      <script src="{% static 'music_app/jquery.min.js'%}"></script>
+      <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+      <script type="text/javascript" src="js/registration_validate.js"></script>
 
-</html>
+    </body>
+
+    </html>
