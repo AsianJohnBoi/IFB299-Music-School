@@ -5,7 +5,7 @@ from django.db import models
 # Same as the admin and so on for every other database table.
 class user(models.Model):
     SKILLS_CHOICES = [('Beginner','Beginner'), ('Intermediate', 'Intermediate'), ('Expert', 'Expert')]
-    GENDER_CHOICES = [('M', 'Male'),('F', 'Femail')]
+    GENDER_CHOICES = [('M', 'Male'),('F', 'Female')]
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=18)
     first_name = models.CharField(max_length=100)
