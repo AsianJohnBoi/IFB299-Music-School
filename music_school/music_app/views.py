@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, authenticate
+from django.contrib.auth.forms import UserCreationForm, authenticate, UserChangeForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse
-from music_app.forms import SignUpForm
+from music_app.forms import SignUpForm, EditProfileForm
 
 
 def index(request):
@@ -53,3 +53,17 @@ def SignUp(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+def edit_account(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('/music_app/account/')
+    else:
+        form = EditProfileForm(instance=request.user)
+    return render(request, 'music_app/edit_account.html', {'form' : form})
+
+
+
+    
