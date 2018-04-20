@@ -13,7 +13,6 @@ class user(models.Model):
     email = models.CharField(max_length=250)
     address = models.CharField(max_length=250)
     age = models.IntegerField(null=False)
-    submittion_date = models.DateTimeField()
     skill_level = models.CharField(choices=SKILLS_CHOICES,max_length=12, blank=False)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=False)
 
