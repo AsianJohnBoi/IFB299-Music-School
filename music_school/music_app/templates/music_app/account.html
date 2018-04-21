@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Music School Portal</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="{% static 'music_app/bootstrap.css' %}" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'music_app/business-casual.css' %}" rel="stylesheet">
+  <link href="{% static 'music_app/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  {% if user.is_authenticated %}
+    <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a id="logo" class="navbar-brand" href="{% url 'index' %}">Pinelands M.S</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookings' %}">Bookings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'lessons' %}">My Lessons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account' %}">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../accounts/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Page Content -->
+    <section class="page-section about-heading">
+      <div class="container">
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper"></span>
+                  <span class="my-4">My Account</span>
+                </h2>
+                  <!-- Contact Form -->
+                <p> Username: {{ user }}</p>
+                <p> Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+                <p> Email: {{ user.email }}</p>
+                <p> Age: {{ user.userprofile.age }}</p>
+                <p> Gender: {{ user.userprofile.gender }}</p>
+                <p> Address: {{ user.userprofile.address }}</p>
+                <p> Skill level: {{ user.userprofile.skill_level }}</p>
+                <button><a href="/music_app/account/edit/">Edit</a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container -->
+        <!-- Footer -->
+        <footer class="py-5 ">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+          </div>
+          <!-- /.container -->
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'music_app/jquery.min.js'%}"></script>
+        <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+        <script type="text/javascript" src="js/registration_validate.js"></script>
+      </div>
+    </section>
+  {% else %}
+  <section class="page-section about-heading">
+      <div class="container">
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper"></span>
+                  <p>You are not logged in, please <a href="{% url 'login'%}?next={{request.path}}"><u>Sign In</u></a><p>
+                  <!-- Contact Form -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container -->
+
+        <!-- Footer -->
+        <footer class="py-5 ">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+          </div>
+          <!-- /.container -->
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'music_app/jquery.min.js'%}"></script>
+        <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+        <script type="text/javascript" src="js/registration_validate.js"></script>
+      </div>
+    </section>
+  {% endif %}
+
+    </body>
+
+    </html>

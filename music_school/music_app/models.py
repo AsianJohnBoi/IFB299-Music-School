@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # django auto increments Primary Keys.
 # So the first student/user will have an auto ID of #1.
@@ -15,6 +17,9 @@ class user(models.Model):
     age = models.IntegerField(null=False)
     skill_level = models.CharField(choices=SKILLS_CHOICES,max_length=12, blank=False)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=False)
+
+    def __str__(self):
+        return self.user.username
 
 class admin(models.Model):
     username = models.CharField(max_length=100)
