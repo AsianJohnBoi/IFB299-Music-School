@@ -48,7 +48,12 @@ class SignUpForm(UserCreationForm):
 
 
 class EditProfileForm(UserChangeForm):
-    template_name='/something/else'
+    email = forms.EmailField(required=True)
+    first_name = forms.CharField(max_length=100, required=True)
+    last_name = forms.CharField(max_length=100, required=True)
+    address = forms.CharField(max_length=250, required=True)
+    age = forms.IntegerField(max_value=120, required=True)
+    gender = forms.ChoiceField(choices=GENDER_CHOICES,required=True)
 
     class Meta:
         model = User
@@ -56,5 +61,9 @@ class EditProfileForm(UserChangeForm):
             'email',
             'first_name',
             'last_name',
-            'password'
+            'email',
+            'address',
+            'age',
+            'gender',
+            'password',
         )
