@@ -26,9 +26,9 @@ class SignUpForm(UserCreationForm):
             'email',
             'address',
             'skill_level',
-            'username', 
+            'username',
             'password1',
-            'password2'          
+            'password2'
         ]
         #Add role? e.g. student or teacher
 

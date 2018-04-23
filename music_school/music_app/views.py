@@ -5,6 +5,8 @@ from django.views import generic
 from django.http import HttpResponse
 from music_app.forms import SignUpForm, EditProfileForm
 
+def login(request):
+    return render(request, 'registration/login.html')
 
 def index(request):
     return render(request, 'music_app/index.html')
@@ -35,7 +37,7 @@ def lessons(request):
 
 def account(request):
     return render(request, 'music_app/account.html')
-    
+
 # class SignUp(generic.CreateView):
 #     form_class = UserCreationForm
 #     success_url = reverse_lazy('login')
@@ -63,7 +65,3 @@ def edit_account(request):
     else:
         form = EditProfileForm(instance=request.user)
     return render(request, 'music_app/edit_account.html', {'form' : form})
-
-
-
-    
