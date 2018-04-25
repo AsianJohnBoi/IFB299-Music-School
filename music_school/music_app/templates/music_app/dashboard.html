@@ -27,7 +27,7 @@
 <body>
 
   <!-- Navigation -->
-  {% if 1 %} <!-- % if user.is_authenticated % -->
+  <!-- % if user.is_authenticated % -->
     <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a id="logo" class="navbar-brand" href="{% url 'index' %}">Pinelands M.S</a>
@@ -57,100 +57,71 @@
     </nav>
 
   <!-- Page Content -->
-    <section class="page-section about-heading">
-      <div class="container">
-        <div class="about-heading-content">
-          <div class="row">
-            <div class="col-xl-9 col-lg-10 mx-auto">
-              <div class="bg-faded rounded p-5">
-                <h2 class="section-heading mb-4">
-                  <span class="section-heading-upper"></span>
-                  <span class="my-4">Welcome {{ user.get_username }}!</span>
-                  <!-- Contact Form -->
-
-                    <div class="card card-outline-primary h-100">
-                      <h3 class="card-header">Upcoming Lessons</h3>
-                      <div>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Lesson 1</li>
-                        <li class="list-group-item">Lession 2</li>
-                        <li class="list-group-item">
-                          <a href="#" class="btn btn-primary">Book More Lessons</a>
-                        </li>
-                      </ul>
-                    </div>
-                    </div>
-
-
-                    <div class="col-lg-5 mb-4">
-                      <div class="card h-100">
-                        <h5 class="card-header">Announcements</h5>
-                        <ul class="list-group list-group-flush">
-                          <h6 class="list-group-item">Announcement 1</h6>
-                          <h6 class="list-group-item">Announcement 2</h6>
-                          <h6 class="list-group-item">Announcement 3</h6>
-                        </ul>
-                      </div>
-                    </div>
-
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="container">
+    <div>
+      <h1 class="my-4">Dashboard</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h3 class="card-header">Announcements</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Three Experanced Teachers</li>
+            <li class="list-group-item">Lessions Monday to Saturday</li>
+            <li class="list-group-item">Three Experanced Teachers</li>
+            <li class="list-group-item">Lessions Monday to Saturday</li>
+            <li class="list-group-item">
+              <a href="#" class="btn btn-primary">Sign Up!</a>
+            </li>
+          </ul>
         </div>
-        <!-- /.container -->
-
-
-
-        <!-- Footer -->
-        <footer class="py-5 ">
-          <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
-          </div>
-          <!-- /.container -->
-        </footer>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="{% static 'music_app/jquery.min.js'%}"></script>
-        <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
-        <script type="text/javascript" src="js/registration_validate.js"></script>
       </div>
-    </section>
-  {% else %}
-  <section class="page-section about-heading">
-      <div class="container">
-        <div class="about-heading-content">
-          <div class="row">
-            <div class="col-xl-9 col-lg-10 mx-auto">
-              <div class="bg-faded rounded p-5">
-                <h2 class="section-heading mb-4">
-                  <span class="section-heading-upper"></span>
-                  <p>You are not logged in, please <a href="{% url 'login'%}?next={{request.path}}"><u>Sign In</u></a><p>
-                  <!-- Contact Form -->
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card card-outline-primary h-100">
+          <h3 class="card-header">Feedbacks</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Three Experanced Teachers</li>
+            <li class="list-group-item">Lessions Monday to Saturday</li>
+            <li class="list-group-item">Three Experanced Teachers</li>
+            <li class="list-group-item">Lessions Monday to Saturday</li>
+            <li class="list-group-item">
+              <a href="#" class="btn btn-primary">Sign Up!</a>
+            </li>
+          </ul>
         </div>
-        <!-- /.container -->
-
-        <!-- Footer -->
-        <footer class="py-5 ">
-          <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
-          </div>
-          <!-- /.container -->
-        </footer>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="{% static 'music_app/jquery.min.js'%}"></script>
-        <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
-        <script type="text/javascript" src="js/registration_validate.js"></script>
       </div>
-    </section>
-  {% endif %}
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h3 class="card-header">Upcoming Lessons</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Three Experanced Teachers</li>
+            <li class="list-group-item">Lessions Monday to Saturday</li>
+            <li class="list-group-item">Three Experanced Teachers</li>
+            <li class="list-group-item">Lessions Monday to Saturday</li>
+            <li class="list-group-item">
+              <a href="#" class="btn btn-primary">Sign Up!</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /.row one -->
 
-    </body>
+  </div>
+  <!-- /.container -->
 
-    </html>
+  <!-- Footer -->
+  <footer id="Main_Footer" class="py-5 ">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'music_app/jquery.min.js' %}"></script>
+  <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+
+</body>
+
+</html>

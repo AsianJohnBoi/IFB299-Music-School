@@ -1,24 +1,5 @@
 {% load static %}
-
-<?php
-
-//make connection to database
-mysql_connect('localhost', 'root', 'ifb299');
-
-//select db
-mysql_select_db('music_school');
-
-$sql="SELECT * SELECT * FROM music_school.music_app_bookings;";
-
-$records=mysql_query($sql);
-
-//display db
-
-
-?>
-
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -41,32 +22,10 @@ $records=mysql_query($sql);
   <link href="{% static 'music_app/business-casual.css' %}" rel="stylesheet">
   <link href="{% static 'music_app/style.css' %}" rel="stylesheet">
 
-  <!-- Import the database music_app_bookings -->
 </head>
 
 <body>
-<table style="width: 100%" border="1" >
-<tr>
-  <th>Teacher</th>
-  <th>Instrument</th>
-  <th>Date</th>
-  <th>Time</th>
-  <th>Room</th> 
-</tr>
-<? php
-  while ($teacher=mysql_fetch_assoc($records)){
-    echo "<tr>";
 
-    echo "<td>".$teacher['Teacher']."</td>";
-    echo "<td>".$teacher['Instrument']."</td>";
-    echo "<td>".$teacher['Date']."</td>";
-    echo "<td>".$teacher['Time']."</td>";
-    echo "<td>".$teacher['Room']."</td>";
-    echo "</tr>";
-  }
-
-?>
-</table>
   <!-- Navigation -->
   {% if user.is_authenticated %}
     <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
@@ -109,8 +68,8 @@ $records=mysql_query($sql);
                   <span class="my-4">Bookings</span>
                   <!-- Bookings Content-->
                 </h2>
-                  <p>
-                  <table style="width: 100%" border="1">
+                <p>
+                  <table style="width: 100%" border: 1">
                     <tr>
                       <th>Teacher</th>
                       <th>Instrument</th>
@@ -127,28 +86,6 @@ $records=mysql_query($sql);
                     </tr>
                   </table>
                 </p>
-                <table style="width: 100%" border="1" >
-                  <tr>
-                    <th>Teacher</th>
-                    <th>Instrument</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Room</th> 
-                  </tr>
-                  <? php
-                    while ($teacher=mysql_fetch_assoc($records)){
-                      echo "<tr>";
-
-                      echo "<td>".$teacher['Teacher']."</td>";
-                      echo "<td>".$teacher['Instrument']."</td>";
-                      echo "<td>".$teacher['Date']."</td>";
-                      echo "<td>".$teacher['Time']."</td>";
-                      echo "<td>".$teacher['Room']."</td>";
-                      echo "</tr>";
-                    }
-
-                  ?>
-                </table>
                 <span>
                   <p><strong>*NOTE:</strong> All times are in 24-hr format</p>
                 </span>
