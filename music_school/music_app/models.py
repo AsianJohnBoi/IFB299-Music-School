@@ -30,4 +30,12 @@ class instrument(models.Model):
     instrument_category = models.CharField(max_length=100)
     quantity = models.IntegerField(null=True)
 
-# class hire(models.Model):
+class teacher(models.Model):
+    name = models.CharField(max_length=250)
+    room = models.IntegerField(null=False)
+
+class bookings(models.Model):
+    teacher = models.ForeignKey(teacher, on_delete=models.CASCADE)
+    Instrument = models.CharField(max_length=100)
+    Date = models.DateField()
+    Time = models.TimeField(auto_now=False, auto_now_add=False)
