@@ -4,9 +4,6 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse
 from music_app.forms import SignUpForm
-
-from music_app.forms import SignUpForm
- # EditProfileForm
 from music_app.models import schedule
 
 def login(request):
@@ -69,7 +66,7 @@ def SignUp(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            return redirect('music_app:account/login')
+            return redirect('login')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
