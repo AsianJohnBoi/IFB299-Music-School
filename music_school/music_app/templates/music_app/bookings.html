@@ -85,9 +85,27 @@
                       <td><button>Book</button></td>
                     </tr>
                   </table>
+                  <table style="width: 100%" border: 1">
+                    <tr>
+                      <th>Teacher</th>
+                      <th>Instrument</th>
+                      <th>Lesson time</th>
+                      <th>Time</th>
+                      <th>Room</th>
+                      <th>Select</th>
+                    </tr>
+                    {% for item in data_list%}
+                    <tr>
+                      <td>{{item.Teacher}}</td>
+                      <td>{{item.Instrument}}</td>
+                      <td>{{item.Date}}</td>
+                      <td>{{item.Time}}</td>
+                    </tr>
+                    {% endfor %}
+                  </table>
                 </p>
                 <span>
-                  <p><strong>*NOTE:</strong> All times are in 24-hr format</p>
+                  <p><strong>*NOTE:</strong> You will receive a cancellation fee if you cancel 24 hours prior to lesson.</p>
                 </span>
                 </div>
                 </div>

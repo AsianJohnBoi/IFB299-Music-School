@@ -34,8 +34,17 @@ class teacher(models.Model):
     name = models.CharField(max_length=250)
     room = models.IntegerField(null=False)
 
-class bookings(models.Model):
+class schedule(models.Model):
     teacher = models.ForeignKey(teacher, on_delete=models.CASCADE)
     Instrument = models.CharField(max_length=100)
     Date = models.DateField()
     Time = models.TimeField(auto_now=False, auto_now_add=False)
+
+class bookings(models.Model): #shows student's bookings
+	student = models.ForeignKey(user, on_delete=models.CASCADE)
+	teacher = models.ForeignKey(teacher, on_delete=models.CASCADE)
+	schedule = models.ForeignKey(schedule, on_delete=models.CASCADE)
+
+class invoice(models.Model):
+	user = models.ForeignKey(user, on_delete=models.CASCADE)
+	receipt = models.IntegerField(null=False)

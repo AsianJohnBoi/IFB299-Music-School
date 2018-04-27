@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse
 from music_app.forms import SignUpForm, EditProfileForm
+from music_app.models import schedule
 
 def login(request):
     return render(request, 'registration/login.html')
@@ -27,7 +28,9 @@ def reg_form(request):
     return render(request, 'music_app/reg_form.html')
 
 def bookings(request):
-    return render(request, 'music_app/bookings.html')
+    data_list = schedule.objects.all()
+    context = {'data_list':data_list}
+    return render(request, 'music_app/bookings.html', context)
 
 def dashboard(request):
     return render(request, 'music_app/dashboard.html')
