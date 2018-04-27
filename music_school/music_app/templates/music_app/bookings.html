@@ -68,44 +68,52 @@
                   <span class="my-4">Bookings</span>
                   <!-- Bookings Content-->
                 </h2>
+                <p>Instrument: 
+                  <select>
+                    <option value="volvo">All</option>
+                    <option value="volvo">Piano</option>
+                    <option value="saab">Claranet</option>
+                    <option value="opel">Violin</option>
+                    <option value="audi">Flute</option>
+                  </select>
+                   Language:
+                  <select>
+                    <option value="volvo">English</option>
+                    <option value="saab">Spanish</option>
+                    <option value="opel">German</option>
+                    <option value="audi">Portugese</option>
+                    <option value="audi">Chinese</option>
+                    <option value="audi">Japanese</option>
+                    <option value="audi">Bengali</option>
+                    <option value="audi">Russian</option>
+                    <option value="audi">Hindi</option>
+                    <option value="audi">Arabic</option>
+                    <option value="audi">Punjabi</option>
+                  </select>
+                  <button><a href="{% url 'bookings' %}">Filter</a></button>
                 <p>
-                  <table style="width: 100%" border: 1">
+                  <table style="width: 100%"">
                     <tr>
                       <th>Teacher</th>
                       <th>Instrument</th>
-                      <th>Lesson time</th>
-                      <th>Room</th>
-                      <th></th>
+                      <th>Date</th>
+                      <th>Lesson Time</th>
+                      <th>Book</th>
                     </tr>
+                    {% for item in data_list %}
                     <tr>
-                      <td>Sam Umtiti</td>
-                      <td>Piano</td>
-                      <td>12:30</td>
-                      <td>Room 1</td>
-                      <td><button>Book</button></td>
-                    </tr>
-                  </table>
-                  <table style="width: 100%" border: 1">
-                    <tr>
-                      <th>Teacher</th>
-                      <th>Instrument</th>
-                      <th>Lesson time</th>
-                      <th>Time</th>
-                      <th>Room</th>
-                      <th>Select</th>
-                    </tr>
-                    {% for item in data_list%}
-                    <tr>
-                      <td>{{item.Teacher}}</td>
+                      <td>{{item.teacher_id}}</td>
                       <td>{{item.Instrument}}</td>
                       <td>{{item.Date}}</td>
-                      <td>{{item.Time}}</td>
+                      <td>{{item.Time|time:"H:i"}}</td>
+                      <td><button name="checks" id="1" value={{item.Lesson_id}}>Book Lesson</button></td>
                     </tr>
                     {% endfor %}
                   </table>
                 </p>
                 <span>
-                  <p><strong>*NOTE:</strong> You will receive a cancellation fee if you cancel 24 hours prior to lesson.</p>
+                  <p><strong>*NOTE:</strong> You will receive a cancellation fee if you cancel 24 hours prior to lesson. If there are no lessons listed above, there are no lessons available. More lessons will be available at the end of the week.</p>
+                  </p>
                 </span>
                 </div>
                 </div>

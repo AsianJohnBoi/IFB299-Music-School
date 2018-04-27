@@ -31,7 +31,7 @@ class instrument(models.Model):
     quantity = models.IntegerField(null=True)
 
 class teacher(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, null=False)
     room = models.IntegerField(null=False)
 
 class schedule(models.Model):
@@ -39,6 +39,7 @@ class schedule(models.Model):
     Instrument = models.CharField(max_length=100)
     Date = models.DateField()
     Time = models.TimeField(auto_now=False, auto_now_add=False)
+    Lesson_id = models.CharField(max_length=100, null=False)
 
 class bookings(models.Model): #shows student's bookings
 	student = models.ForeignKey(user, on_delete=models.CASCADE)
