@@ -39,8 +39,7 @@ class schedule(models.Model):
     Instrument = models.CharField(max_length=100)
     Date = models.DateField()
     Time = models.TimeField(auto_now=False, auto_now_add=False)
-<<<<<<< HEAD
-=======
+
 
 class bookings(models.Model): #shows student's bookings
 	student = models.ForeignKey(user, on_delete=models.CASCADE)
@@ -50,4 +49,3 @@ class bookings(models.Model): #shows student's bookings
 class invoice(models.Model):
 	user = models.ForeignKey(user, on_delete=models.CASCADE)
 	receipt = models.IntegerField(null=False)
->>>>>>> 9fa0e930b6b2b74e0709b60ba34cac1415ca53b2

@@ -46,7 +46,6 @@ class SignUpForm(forms.ModelForm):
 
 
 
-<<<<<<< HEAD
 # class EditProfileForm(UserChangeForm):
 #     email = forms.EmailField(required=True)
 #     first_name = forms.CharField(max_length=100, required=True)
@@ -67,25 +66,24 @@ class SignUpForm(forms.ModelForm):
 #             'gender',
 #             'password',
 #         )
-=======
-class EditProfileForm(UserChangeForm):
-    email = forms.EmailField(required=True)
-    first_name = forms.CharField(max_length=100, required=True)
-    last_name = forms.CharField(max_length=100, required=True)
-    address = forms.CharField(max_length=250, required=True)
-    age = forms.IntegerField(max_value=120, required=True)
-    gender = forms.ChoiceField(choices=GENDER_CHOICES,required=True)
 
-    class Meta:
-        model = User
-        fields = (
-            'email',
-            'first_name',
-            'last_name',
-            'email',
-            'address',
-            'age',
-            'gender',
-            'password',
-        )
->>>>>>> 9fa0e930b6b2b74e0709b60ba34cac1415ca53b2
+# class EditProfileForm(UserChangeForm):
+#     email = forms.EmailField(required=True)
+#     first_name = forms.CharField(max_length=100, required=True)
+#     last_name = forms.CharField(max_length=100, required=True)
+#     address = forms.CharField(max_length=250, required=True)
+#     age = forms.IntegerField(max_value=120, required=True)
+#     gender = forms.ChoiceField(choices=GENDER_CHOICES,required=True)
+#
+#     class Meta:
+#         model = User
+#         fields = (
+#             'email',
+#             'first_name',
+#             'last_name',
+#             'email',
+#             'address',
+#             'age',
+#             'gender',
+#             'password',
+#         )

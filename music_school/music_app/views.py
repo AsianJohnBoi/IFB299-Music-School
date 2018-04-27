@@ -3,13 +3,11 @@ from django.contrib.auth.forms import UserCreationForm, authenticate, UserChange
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse
-<<<<<<< HEAD
 from music_app.forms import SignUpForm
-# , EditProfileForm
-=======
-from music_app.forms import SignUpForm, EditProfileForm
+
+from music_app.forms import SignUpForm
+ # EditProfileForm
 from music_app.models import schedule
->>>>>>> 9fa0e930b6b2b74e0709b60ba34cac1415ca53b2
 
 def login(request):
     return render(request, 'registration/login.html')
