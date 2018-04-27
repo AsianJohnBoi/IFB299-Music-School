@@ -3,7 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, authenticate, UserChange
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse
-from music_app.forms import SignUpForm, EditProfileForm
+from music_app.forms import SignUpForm
+# , EditProfileForm
 
 def login(request):
     return render(request, 'registration/login.html')
@@ -43,18 +44,45 @@ def account(request):
 #     success_url = reverse_lazy('login')
 #     template_name = 'signup.html'
 
+     # def post(self, request):
+     #    form = SignUpForm(request.POST)
+     #    if form.is_valid():
+     #        text = form.cleaned_data['']
+
 def SignUp(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            return redirect('../account/login/')
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            gender = form.cleaned_data['gender']
+            age = form.cleaned_data['age']
+            email = form.cleaned_data['email']
+            address = form.cleaned_data['address']
+            skill_level = form.cleaned_data['skill_level']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            return redirect('music_app:account/login')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+# username = form.cleaned_data.get('username')
+# password = form.cleaned_data.get('password')
+# def SignUp(request):
+#     if request.method == 'POST':
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password')
+#             user = authenticate(username=username, password=raw_password)
+#             return redirect('../account/login/')
+#     else:
+#         form = SignUpForm()
+#     return render(request, 'signup.html', {'form': form})
 
 def edit_account(request):
     if request.method == 'POST':

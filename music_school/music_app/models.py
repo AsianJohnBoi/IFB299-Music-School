@@ -8,15 +8,15 @@ from django.contrib.auth.models import User
 class user(models.Model):
     SKILLS_CHOICES = [('Beginner','Beginner'), ('Intermediate', 'Intermediate'), ('Expert', 'Expert')]
     GENDER_CHOICES = [('M', 'Male'),('F', 'Female')]
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=18)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=False)
+    age = models.IntegerField(null=False)
     email = models.CharField(max_length=250)
     address = models.CharField(max_length=250)
-    age = models.IntegerField(null=False)
     skill_level = models.CharField(choices=SKILLS_CHOICES,max_length=12, blank=False)
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=False)
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=18)
 
     def __str__(self):
         return self.user.username
