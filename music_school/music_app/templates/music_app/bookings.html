@@ -69,14 +69,36 @@
                   <!-- Bookings Content-->
                 </h2>
                 <p>Instrument: 
-                  <select>
-                    <option value="volvo">All</option>
-                    <option value="volvo">Piano</option>
-                    <option value="saab">Claranet</option>
-                    <option value="opel">Violin</option>
-                    <option value="audi">Flute</option>
+                  <select name="Instruments">
+                    <option>--Select--</option>
                   </select>
-                   Language:
+
+                  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+                  <script>
+                    const $select = $('select[name="Instruments"]');
+                    const opts = [
+                      {'value':'{% url 'bookings' %}', 'text':'All'},
+                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Guitar'},
+                      {'value':'{% url 'bookings_Piano' %}', 'text':'Piano'},
+                      {'value':'{% url 'bookings_Claranet' %}', 'text':'Claranet'},
+                      {'value':'{% url 'bookings_Violin' %}', 'text':'Violin'},
+                      {'value':'{% url 'bookings_Flute' %}', 'text':'Flute'},
+                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Guitar'},
+                      {'value':'{% url 'bookings_Trumpet' %}', 'text':'Trumpet'}
+                    ];
+
+                    opts.forEach(function(obj){
+                      $("<option />", {
+                        value: obj.value,
+                        text: obj.text
+                      }).appendTo($select)
+                    });
+
+                    $select.on("change", function(){
+                      window.location = this.value;
+                    });
+                  </script>
+                   <!-- Language:
                   <select>
                     <option value="volvo">English</option>
                     <option value="saab">Spanish</option>
@@ -89,8 +111,7 @@
                     <option value="audi">Hindi</option>
                     <option value="audi">Arabic</option>
                     <option value="audi">Punjabi</option>
-                  </select>
-                  <button><a href="{% url 'bookings' %}">Filter</a></button>
+                  </select> -->
                 <p>
                   <table style="width: 100%"">
                     <tr>

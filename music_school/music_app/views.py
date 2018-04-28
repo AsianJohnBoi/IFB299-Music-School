@@ -29,18 +29,49 @@ def reg_form(request):
 
 def bookings(request):
     data_list = schedule.objects.all()
-    # language = schedule.objects.filter();
-    instrument1 = schedule.objects.filter(Instrument="Piano")
-    instrument2 = schedule.objects.filter(Instrument="Claranet")
-    instrument3 = schedule.objects.filter(Instrument="Flute")
-    instrument4 = schedule.objects.filter(Instrument="Violin")
-    ins1 = {'instrument1':instrument1 }
-    ins2 = {'instrument2':instrument2 }
-    ins3 = {'instrument3':instrument3 }
-    ins4 = {'instrument4':instrument4 }
-
     context = {'data_list':data_list }
-    return render(request, 'music_app/bookings.html', context, ins1)
+    return render(request, 'music_app/bookings.html', context)
+
+def bookings_Piano(request):
+    data_list = schedule.objects.filter(Instrument="Piano")
+    context = {'data_list':data_list }
+    return render(request, 'music_app/bookings.html', context) 
+
+def bookings_Claranet(request):
+    data_list = schedule.objects.filter(Instrument="Claranet")
+    context = {'data_list':data_list }
+    return render(request, 'music_app/bookings.html', context) 
+
+def bookings_Flute(request):
+    data_list = schedule.objects.filter(Instrument="Flute")
+    context = {'data_list':data_list }
+    return render(request, 'music_app/bookings.html', context) 
+
+def bookings_Violin(request):
+    data_list = schedule.objects.filter(Instrument="Violin")
+    context = {'data_list':data_list }
+    return render(request, 'music_app/bookings.html', context) 
+
+def bookings_Guitar(request):
+    data_list = schedule.objects.filter(Instrument="Guitar")
+    context = {'data_list':data_list }
+    return render(request, 'music_app/bookings.html', context) 
+
+def bookings_Trumpet(request):
+    data_list = schedule.objects.filter(Instrument="Trumpet")
+    context = {'data_list':data_list }
+    return render(request, 'music_app/bookings.html', context) 
+
+
+# language = schedule.objects.filter();
+    # instrument1 = schedule.objects.filter(Instrument="Piano")
+    # instrument2 = schedule.objects.filter(Instrument="Claranet")
+    # instrument3 = schedule.objects.filter(Instrument="Flute")
+    # instrument4 = schedule.objects.filter(Instrument="Violin")
+    # ins1 = {'instrument1':instrument1 }
+    # ins2 = {'instrument2':instrument2 }
+    # ins3 = {'instrument3':instrument3 }
+    # ins4 = {'instrument4':instrument4 }
 
 def dashboard(request):
     return render(request, 'music_app/dashboard.html')

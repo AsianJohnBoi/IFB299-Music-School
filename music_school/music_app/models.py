@@ -40,6 +40,7 @@ class schedule(models.Model):
     Date = models.DateField()
     Time = models.TimeField(auto_now=False, auto_now_add=False)
     Lesson_id = models.CharField(max_length=100, null=False)
+    Language = models.CharField(max_length=100)
 
 class bookings(models.Model): #shows student's bookings
 	student = models.ForeignKey(user, on_delete=models.CASCADE)

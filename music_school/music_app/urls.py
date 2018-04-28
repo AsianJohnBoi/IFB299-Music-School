@@ -10,7 +10,13 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('pricing/', views.pricing, name='pricing'),
     path('reg_form/', views.reg_form, name='reg_form'),
-    path('bookings/', views.bookings, name='bookings'),
+    path('bookings/', views.bookings, name='bookings'), #displays all available lessons teaching any instrument
+    path('bookings_Piano/', views.bookings_Piano, name='bookings_Piano'), #displays lessons for Piano
+    path('bookings_Claranet/', views.bookings_Claranet, name='bookings_Claranet'), #displays lessons for Claranet
+    path('bookings_Flute/', views.bookings_Flute, name='bookings_Flute'), #displays lessons for flute
+    path('bookings_Violin/', views.bookings_Violin, name='bookings_Violin'), #displays lessons for Violin
+    path('bookings_Guitar/', views.bookings_Guitar, name='bookings_Guitar'), #displays lessons for Guitar
+    path('bookings_Trumpet/', views.bookings_Trumpet, name='bookings_Trumpet'), #displays lessons for Trumpet
     path('lessons/', views.lessons, name='lessons'),
     path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),
