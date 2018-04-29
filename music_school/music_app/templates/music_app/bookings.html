@@ -72,6 +72,10 @@
                   <select name="Instruments">
                     <option>--Select--</option>
                   </select>
+                  Teacher: 
+                  <select name="staff_filter">
+                    <option>--Select--</option>
+                  </select>
 
                   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
                   <script>
@@ -97,6 +101,29 @@
                     $select.on("change", function(){
                       window.location = this.value;
                     });
+
+                    const $select2 = $('select[name="staff_filter"]');
+                    const opts2 = [
+                      {'value':'{% url 'bookings' %}', 'text':'All'},
+                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Alexander Colin, ID:498162'},
+                      {'value':'{% url 'bookings_Piano' %}', 'text':'Lee Lin Shin, ID: 129376'},
+                      {'value':'{% url 'bookings_Claranet' %}', 'text':'Tim Umtiti, ID: 234985'},
+                      {'value':'{% url 'bookings_Violin' %}', 'text':'Chumun Li, ID: 239764'},
+                      {'value':'{% url 'bookings_Flute' %}', 'text':'Xu Xian, ID: 462301'},
+                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Liam Cousins, ID: 569845'},
+                    ];
+
+                    opts2.forEach(function(obj){
+                      $("<option />", {
+                        value: obj.value,
+                        text: obj.text
+                      }).appendTo($select2)
+                    });
+
+                    $select2.on("change", function(){
+                      window.location = this.value;
+                    });
+
                   </script>
                    <!-- Language:
                   <select>
