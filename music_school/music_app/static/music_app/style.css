@@ -52,6 +52,17 @@ nav ul li{
 	padding: 0 10px 0 10px;
 }
 
+/* Michael Added */
+.testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.testimonial-group > .row > .col-xs-4 {
+  display: inline-block;
+  float: none;
+}
+
+
 body{
   background-color: #6B554B;
 }
