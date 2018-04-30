@@ -2,8 +2,22 @@
   margin-bottom: 30px;
 }
 #Nav_style{
-  background-color: #00B2AB;
+  background-color: #FFFFFF;
+  border-bottom: 4px solid #1EB2A8;
 }
+
+#Nav_style:before{
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: -100px;
+  left: -100px;
+  right: -100px;
+  bottom: 3px;
+  border: 4px solid #1EB2A8;
+}
+
+
 #register{
   margin-left: 20%;
   margin-right: 20%;
@@ -16,10 +30,11 @@ a {
 }
 nav{
 	height:80px;
+  font-family: 'American Typewriter';
 	font-size:24px;
 	text-align:center;
 	letter-spacing:1.5px;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 ul{
@@ -43,10 +58,10 @@ body{
 
 h1, h2{
   color: #E56B35 !important;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
 }
 
 #Main_Footer{
-  background-color: #6B554B;
+  background-color: #1EB2A8;
 }
