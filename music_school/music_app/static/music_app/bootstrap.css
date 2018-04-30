@@ -4351,35 +4351,35 @@ tbody.collapse.show {
 }
 
 .navbar-dark .navbar-brand {
-  /* color: #6A554C; */
+  color: #6A554C;
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
-  color: #6A554C;
+  color:  #6A554C;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: #6A554C;
+  color:  #6A554C;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
-  color:white;
+  color: #6A554C;
 }
 
 .navbar-dark .navbar-nav .nav-link.disabled {
-  color:white;
+  color: #6A554C;
 }
 
 .navbar-dark .navbar-nav .show > .nav-link,
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-  color:white;
+  color:  #6A554C;
 }
 
 .navbar-dark .navbar-toggler {
-  color:white;
-  color:white;
+  color: #6A554C ;
+  color: #6A554C;
 }
 
 .navbar-dark .navbar-toggler-icon {
@@ -4387,15 +4387,15 @@ tbody.collapse.show {
 }
 
 .navbar-dark .navbar-text {
-  color:white;
+  color:  #6A554C;
 }
 
 .navbar-dark .navbar-text a {
-  color:white;
+  color: #6A554C;
 }
 
 .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
-  color:white;
+  color: #6A554C;
 }
 
 .card {
