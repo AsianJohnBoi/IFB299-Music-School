@@ -140,6 +140,7 @@
                     <option value="audi">Punjabi</option>
                   </select> -->
                 <p>
+                  </script>
                   <table style="width: 100%"">
                     <tr>
                       <th>Teacher</th>
@@ -154,7 +155,10 @@
                       <td>{{item.Instrument}}</td>
                       <td>{{item.Date}}</td>
                       <td>{{item.Time|time:"H:i"}}</td>
-                      <td><button name="checks" id="1" value={{item.Lesson_id}}>Book Lesson</button></td>
+                       <!-- <input type="button" value={{item.Lesson_id}} onclick="getVal(this.value)"> -->
+                       <!-- <button name="checks" id="1" value={{item.Lesson_id}}> -->
+
+                      <td><button name="checks" id="1" value="Teacher: {{item.teacher_id}}, Instrument: {{item.Instrument}}, Date: {{item.Date}}, Time: {{item.Time|time:'H:i'}}, Lesson id: {{item.Lesson_id}}" onclick="clicked(this.value)">Book Lesson</button></td>
                     </tr>
                     {% endfor %}
                   </table>
@@ -163,6 +167,16 @@
                   <p><strong>*NOTE:</strong> You will receive a cancellation fee if you cancel 24 hours prior to lesson. If there are no lessons listed above, there are no lessons available. More lessons will be available at the end of the week.</p>
                   </p>
                 </span>
+                <script type="text/javascript">
+                function clicked(value) {
+                   if (confirm('Confirm booking? \n \n' + value)) {
+                       alert("Lesson Booked!");
+                       window.location.reload(); //reloads page
+                   } else {
+                       return false;
+                   }
+                }
+                </script>
                 </div>
                 </div>
               </div>
