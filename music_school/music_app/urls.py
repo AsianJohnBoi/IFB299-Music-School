@@ -17,6 +17,12 @@ urlpatterns = [
     path('bookings_Violin/', views.bookings_Violin, name='bookings_Violin'), #displays lessons for Violin
     path('bookings_Guitar/', views.bookings_Guitar, name='bookings_Guitar'), #displays lessons for Guitar
     path('bookings_Trumpet/', views.bookings_Trumpet, name='bookings_Trumpet'), #displays lessons for Trumpet
+    path('bookings_English/', views.bookings_English, name='bookings_English'), 
+    path('bookings_Spanish/', views.bookings_Spanish, name='bookings_Spanish'), 
+    path('bookings_Italian/', views.bookings_Italian, name='bookings_Italian'),
+    path('bookings_German/', views.bookings_German, name='bookings_German'), 
+    path('bookings_Chinese/', views.bookings_Chinese, name='bookings_Chinese'), 
+    path('bookings_French/', views.bookings_French, name='bookings_French'), 
     path('lessons/', views.lessons, name='lessons'),
     path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),

@@ -179,16 +179,131 @@ def bookings_Trumpet(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+def bookings_English(request):
+    if (request.method == 'GET'):
+        data_list = schedule.objects.filter(Language="English", Booked="NO")
+        context = {'data_list':data_list }
+        return render(request, 'music_app/bookings.html', context)
 
-# language = schedule.objects.filter();
-    # instrument1 = schedule.objects.filter(Instrument="Piano")
-    # instrument2 = schedule.objects.filter(Instrument="Claranet")
-    # instrument3 = schedule.objects.filter(Instrument="Flute")
-    # instrument4 = schedule.objects.filter(Instrument="Violin")
-    # ins1 = {'instrument1':instrument1 }
-    # ins2 = {'instrument2':instrument2 }
-    # ins3 = {'instrument3':instrument3 }
-    # ins4 = {'instrument4':instrument4 }
+    else:
+        
+        try:
+            schedule_id = int(request.POST.get('id'))
+            sched = schedule.objects.get(id = schedule_id)
+            booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
+
+def bookings_Italian(request):
+    if (request.method == 'GET'):
+        data_list = schedule.objects.filter(Booked="NO", Language="Italian")
+        context = {'data_list':data_list }
+        return render(request, 'music_app/bookings.html', context)
+
+    else:
+        
+        try:
+            schedule_id = int(request.POST.get('id'))
+            sched = schedule.objects.get(id = schedule_id)
+            booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
+
+def bookings_German(request):
+    if (request.method == 'GET'):
+        data_list = schedule.objects.filter(Booked="NO", Language="German")
+        context = {'data_list':data_list }
+        return render(request, 'music_app/bookings.html', context)
+
+    else:
+        
+        try:
+            schedule_id = int(request.POST.get('id'))
+            sched = schedule.objects.get(id = schedule_id)
+            booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
+
+def bookings_Spanish(request):
+    if (request.method == 'GET'):
+        data_list = schedule.objects.filter(Booked="NO", Language="Spanish")
+        context = {'data_list':data_list }
+        return render(request, 'music_app/bookings.html', context)
+
+    else:
+        
+        try:
+            schedule_id = int(request.POST.get('id'))
+            sched = schedule.objects.get(id = schedule_id)
+            booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
+
+def bookings_Chinese(request):
+    if (request.method == 'GET'):
+        data_list = schedule.objects.filter(Booked="NO", Language="Chinese")
+        context = {'data_list':data_list }
+        return render(request, 'music_app/bookings.html', context)
+
+    else:
+        
+        try:
+            schedule_id = int(request.POST.get('id'))
+            sched = schedule.objects.get(id = schedule_id)
+            booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
+
+def bookings_French(request):
+    if (request.method == 'GET'):
+        data_list = schedule.objects.filter(Booked="NO", Language="French")
+        context = {'data_list':data_list }
+        return render(request, 'music_app/bookings.html', context)
+
+    else:
+        
+        try:
+            schedule_id = int(request.POST.get('id'))
+            sched = schedule.objects.get(id = schedule_id)
+            booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
 def dashboard(request):
     return render(request, 'music_app/dashboard.html')
