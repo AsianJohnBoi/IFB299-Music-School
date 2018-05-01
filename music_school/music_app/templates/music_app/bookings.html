@@ -158,7 +158,7 @@
                        <!-- <input type="button" value={{item.Lesson_id}} onclick="getVal(this.value)"> -->
                        <!-- <button name="checks" id="1" value={{item.Lesson_id}}> -->
 
-                      <td><button name="checks" id="1" value="Teacher: {{item.teacher_id}}, Instrument: {{item.Instrument}}, Date: {{item.Date}}, Time: {{item.Time|time:'H:i'}}, Lesson id: {{item.Lesson_id}}" onclick="clicked(this.value)">Book Lesson</button></td>
+                      <td><button name="checks" id="1" value="Teacher: {{item.teacher_id}}, Instrument: {{item.Instrument}}, Date: {{item.Date}}, Time: {{item.Time|time:'H:i'}}, Lesson id: {{item.Lesson_id}}" onclick="clicked(this.value, this.id)">Book Lesson</button></td>
                     </tr>
                     {% endfor %}
                   </table>
@@ -168,10 +168,13 @@
                   </p>
                 </span>
                 <script type="text/javascript">
-                function clicked(value) {
+                function clicked(value, id) {
                    if (confirm('Confirm booking? \n \n' + value)) {
-                       alert("Lesson Booked!");
-                       window.location.reload(); //reloads page
+                      alert("Lesson Booked!");
+                      location.reload(); 
+                      {% load custom_tags %}
+                      {% insert %}
+                      location.reload(); //reloads page
                    } else {
                        return false;
                    }
