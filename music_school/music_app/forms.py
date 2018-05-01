@@ -1,5 +1,5 @@
 from django import forms
-from music_app.models import user
+from music_app.models import UserProfile
 # from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
@@ -19,7 +19,7 @@ class SignUpForm(forms.ModelForm):
     password = forms.CharField(min_length=12, max_length=24, required=True)
 
     class Meta:
-        model = user
+        model = UserProfile
         fields = (
             'first_name',
             'last_name',
