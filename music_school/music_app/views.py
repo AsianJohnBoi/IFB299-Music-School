@@ -33,7 +33,7 @@ def reg_form(request):
 @csrf_exempt
 def bookings(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.all()
+        data_list = schedule.objects.filter(Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -42,8 +42,8 @@ def bookings(request):
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
-
             booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
             return JsonResponse({'status': 'ok'})
         except schedule.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
@@ -54,7 +54,7 @@ def bookings(request):
 
 def bookings_Piano(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Piano")
+        data_list = schedule.objects.filter(Instrument="Piano", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -63,8 +63,8 @@ def bookings_Piano(request):
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
-
             booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
             return JsonResponse({'status': 'ok'})
         except schedule.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
@@ -76,7 +76,7 @@ def bookings_Piano(request):
 
 def bookings_Claranet(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Claranet")
+        data_list = schedule.objects.filter(Instrument="Claranet", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -85,8 +85,8 @@ def bookings_Claranet(request):
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
-
             booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
             return JsonResponse({'status': 'ok'})
         except schedule.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
@@ -97,7 +97,7 @@ def bookings_Claranet(request):
 
 def bookings_Flute(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Flute")
+        data_list = schedule.objects.filter(Instrument="Flute", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -106,8 +106,8 @@ def bookings_Flute(request):
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
-
             booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
             return JsonResponse({'status': 'ok'})
         except schedule.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
@@ -118,7 +118,7 @@ def bookings_Flute(request):
 
 def bookings_Violin(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Violin")
+        data_list = schedule.objects.filter(Instrument="Violin", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -127,8 +127,8 @@ def bookings_Violin(request):
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
-
             booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
             return JsonResponse({'status': 'ok'})
         except schedule.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
@@ -139,7 +139,7 @@ def bookings_Violin(request):
 
 def bookings_Guitar(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Guitar")
+        data_list = schedule.objects.filter(Instrument="Guitar", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -148,8 +148,8 @@ def bookings_Guitar(request):
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
-
             booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
             return JsonResponse({'status': 'ok'})
         except schedule.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
@@ -160,7 +160,7 @@ def bookings_Guitar(request):
 
 def bookings_Trumpet(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Trumpet")
+        data_list = schedule.objects.filter(Instrument="Trumpet", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -169,8 +169,8 @@ def bookings_Trumpet(request):
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
-
             booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            schedule.objects.filter(id=schedule_id).update(Booked='YES')
             return JsonResponse({'status': 'ok'})
         except schedule.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})

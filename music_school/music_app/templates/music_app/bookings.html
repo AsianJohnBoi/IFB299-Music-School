@@ -170,21 +170,19 @@
                 <script type="text/javascript">
                 function clicked(value, id) {
                    if (confirm('Confirm booking? \n \n' + value)) {
-                      alert("Lesson Booked!");
-
                       $.ajax({'type': 'POST',
                               'url': '/music_app/bookings/',
                                'data': {'id': id},
                                'success': function(resp) { 
                                     if(resp.status == 'ok') {
-                                        alert('Booking created');
+                                      alert('Booking created');
                                     }
                                     else {
                                        alert(resp.message);
                                     }
                                 }
                               });
-                      //location.reload(); 
+                    location.reload(); 
                       
                     //  location.reload(); //reloads page
                    } else {

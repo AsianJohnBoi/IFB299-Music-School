@@ -38,6 +38,7 @@ class schedule(models.Model):
     Time = models.TimeField(auto_now=False, auto_now_add=False)
     Lesson_id = models.CharField(max_length=100, null=False)
     Language = models.CharField(max_length=100)
+    Booked = models.CharField(max_length=100)
 
 class Bookings(models.Model): #shows student's bookings
 	student = models.ForeignKey(User, on_delete=models.CASCADE)
