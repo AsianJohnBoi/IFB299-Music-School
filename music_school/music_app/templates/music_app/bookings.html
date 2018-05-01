@@ -72,8 +72,12 @@
                   <select name="Instruments">
                     <option>--Select--</option>
                   </select>
-                  Teacher:
+                    Teacher:
                   <select name="staff_filter">
+                    <option>--Select--</option>
+                  </select>
+                    Language:
+                  <select name="language_filter">
                     <option>--Select--</option>
                   </select>
 
@@ -124,6 +128,28 @@
                       window.location = this.value;
                     });
 
+                    const $select3 = $('select[name="language_filter"]');
+                    const opts3 = [
+                      {'value':'{% url 'bookings' %}', 'text':'Any'},
+                      {'value':'{% url 'bookings_English' %}', 'text':'English'},
+                      {'value':'{% url 'bookings_Spanish' %}', 'text':'Spanish'},
+                      {'value':'{% url 'bookings_Italian' %}', 'text':'Italian'},
+                      {'value':'{% url 'bookings_German' %}', 'text':'German'},
+                      {'value':'{% url 'bookings_Chinese' %}', 'text':'Chinese'},
+                      {'value':'{% url 'bookings_French' %}', 'text':'French'},
+                    ];
+
+                    opts3.forEach(function(obj){
+                      $("<option />", {
+                        value: obj.value,
+                        text: obj.text
+                      }).appendTo($select3)
+                    });
+
+                    $select3.on("change", function(){
+                      window.location = this.value;
+                    });
+
                   </script>
                    <!-- Language:
                   <select>
@@ -170,21 +196,19 @@
                 <script type="text/javascript">
                 function clicked(value, id) {
                    if (confirm('Confirm booking? \n \n' + value)) {
-                      alert("Lesson Booked!");
-
                       $.ajax({'type': 'POST',
                               'url': '/music_app/bookings/',
                                'data': {'id': id},
                                'success': function(resp) { 
                                     if(resp.status == 'ok') {
-                                        alert('Booking created');
+                                      alert('Booking created');
                                     }
                                     else {
                                        alert(resp.message);
                                     }
                                 }
                               });
-                      //location.reload(); 
+                    location.reload(); 
                       
                     //  location.reload(); //reloads page
                    } else {
