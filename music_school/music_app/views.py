@@ -38,7 +38,7 @@ def bookings(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -59,7 +59,7 @@ def bookings_Piano(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -81,7 +81,7 @@ def bookings_Claranet(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -102,7 +102,7 @@ def bookings_Flute(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -123,7 +123,7 @@ def bookings_Violin(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -144,7 +144,7 @@ def bookings_Guitar(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -165,7 +165,7 @@ def bookings_Trumpet(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
