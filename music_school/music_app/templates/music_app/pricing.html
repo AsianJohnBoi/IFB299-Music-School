@@ -49,8 +49,12 @@
           </li>
         </ul>
       </div>
-      <a class="navbar-brand" href="{% url 'signup' %}">Register</a>
-      <a class="navbar-brand" href="{% url 'login' %}">Login</a>
+      {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'dashboard' %}">Hi {{ user.first_name }}!</a>
+        {% else %}
+        <a class="navbar-brand" href="{% url 'signup' %}">Register</a>
+        <a class="navbar-brand" href="{% url 'login' %}">Login</a>
+        {% endif %}
     </div>
   </nav>
 
