@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # django auto increments Primary Keys.
@@ -10,13 +12,22 @@ class UserProfile(models.Model):
     GENDER_CHOICES = [('M', 'Male'),('F', 'Female')]
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=False)
     age = models.IntegerField(null=False)
-    email = models.CharField(max_length=250)
+    email = models.CharField(max_length=250) 
     address = models.CharField(max_length=250)
     skill_level = models.CharField(choices=SKILLS_CHOICES,max_length=12, blank=False)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, related_name='profile')
 
     def __str__(self):
         return self.user.username
+
+# @receiver(post_save, sender=User)
+# def create_or_update(sender, instance, created, **kwargs):
+#     print('herrr', instance)
+#     if created:
+#         UserProfile.objects.create(user=instance)
+
+#     # import pdb; pdb.set_trace()
+#     instance.profile.save()
 
 class admin(models.Model):
     username = models.CharField(max_length=100)

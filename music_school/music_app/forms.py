@@ -1,11 +1,15 @@
 from django import forms
 from music_app.models import UserProfile
 # from django.contrib.auth.models import User
-# from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 SKILLS_CHOICES = [('Beginner','Beginner'), ('Intermediate', 'Intermediate'), ('Expert', 'Expert')]
 GENDER_CHOICES = [('M', 'Male'),('F', 'Female')]
+
+
+# class UserForm(UserCreationForm):
+#     email = forms.EmailField(req)
 
 class SignUpForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100, required=True)
@@ -15,8 +19,6 @@ class SignUpForm(forms.ModelForm):
     email = forms.EmailField(required=True)
     address = forms.CharField(max_length=250, required=True)
     skill_level = forms.ChoiceField(choices=SKILLS_CHOICES)
-    username = forms.CharField(max_length=100 , required=True)
-    password = forms.CharField(min_length=12, max_length=24, required=True)
 
     class Meta:
         model = UserProfile
@@ -28,8 +30,7 @@ class SignUpForm(forms.ModelForm):
             'email',
             'address',
             'skill_level',
-            'username',
-            'password')
+            )
 
     # def save(self, commit=True):
     #     user = super(SignUpForm, self).save(commit=False)
@@ -74,16 +75,14 @@ class SignUpForm(forms.ModelForm):
 #     address = forms.CharField(max_length=250, required=True)
 #     age = forms.IntegerField(max_value=120, required=True)
 #     gender = forms.ChoiceField(choices=GENDER_CHOICES,required=True)
-#
+
 #     class Meta:
-#         model = User
+#         model = UserProfile
 #         fields = (
 #             'email',
 #             'first_name',
 #             'last_name',
-#             'email',
 #             'address',
 #             'age',
 #             'gender',
-#             'password',
 #         )

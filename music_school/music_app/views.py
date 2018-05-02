@@ -3,7 +3,8 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib.auth.forms import UserCreationForm, authenticate, UserChangeForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
@@ -326,9 +327,11 @@ def account(request):
      #    if form.is_valid():
      #        text = form.cleaned_data['']
 
-def SignUp(request):
+
+def Profile(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = SignUpForm(request.POST, user=request.user)
+
         if form.is_valid():
             form.save()
             first_name = form.cleaned_data['first_name']
@@ -338,35 +341,31 @@ def SignUp(request):
             email = form.cleaned_data['email']
             address = form.cleaned_data['address']
             skill_level = form.cleaned_data['skill_level']
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            return redirect('login')
+            return redirect('dashboard')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
 # username = form.cleaned_data.get('username')
 # password = form.cleaned_data.get('password')
-# def SignUp(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password')
-#             user = authenticate(username=username, password=raw_password)
-#             return redirect('../account/login/')
-#     else:
-#         form = SignUpForm()
-#     return render(request, 'signup.html', {'form': form})
-
-def edit_account(request):
+def SignUp(request):
     if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=request.user)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('/music_app/account/')
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            # user = authenticate(username=username, password=raw_password)
+            auth_login(request, user)
+            return redirect('edit_account')
     else:
-        form = EditProfileForm(instance=request.user)
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+@login_required
+def edit_account(request):
+    form = SignUpForm(request.POST, instance=request.user)
+    if form.is_valid():
+        form.save()
+        return redirect('/music_app/account/')
     return render(request, 'music_app/edit_account.html', {'form' : form})

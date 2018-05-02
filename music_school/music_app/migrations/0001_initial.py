@@ -70,7 +70,6 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('gender', models.CharField(choices=[('M', 'Male'), ('F', 'Female')], max_length=1)),
                 ('age', models.IntegerField()),
-                ('email', models.CharField(max_length=250)),
                 ('address', models.CharField(max_length=250)),
                 ('skill_level', models.CharField(choices=[('Beginner', 'Beginner'), ('Intermediate', 'Intermediate'), ('Expert', 'Expert')], max_length=12)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
