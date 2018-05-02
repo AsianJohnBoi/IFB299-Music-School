@@ -36,13 +36,14 @@
             <div class="bg-faded rounded p-5">
               <h2 class="section-heading mb-4">
                 <span class="section-heading-upper"></span>
-                <span class="my-4">Login</span>
+                <span class="my-4">Logged Out!</span>
               </h2>
                 <!-- Contact Form -->
 				{% block content %}
-				<p>Logged out!</p>  
-
-				<a href="{% url 'login'%}">Click here to login again.</a>
+        <ul style="list-style-type:disc">
+          <li><a href="{% url 'login'%}">Click here to login again.</a></li>
+          <li><a href="{% url 'index'%}">Click here for Home page</a></li>
+        </ul>
 				{% endblock %}
                 </p>
               </div>

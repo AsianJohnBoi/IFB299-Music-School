@@ -27,7 +27,7 @@
 <body>
 
   <!-- Navigation -->
-  <!-- % if user.is_authenticated % -->
+    {% if user.is_authenticated %}
     <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a id="logo" href="{% url 'index' %}"><img src="{% static "music_app/images/pinelands_logo.png" %}" alt="website logo" height="50" />
@@ -119,7 +119,43 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'music_app/jquery.min.js' %}"></script>
   <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+  <script type="text/javascript" src="js/registration_validate.js"></script>
+      </div>
+    </section>
+  {% else %}
+  <section class="page-section about-heading">
+      <div class="container">
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper"></span>
+                  <p>Unauthorised!</p>
+                  <p>Please <a href="{% url 'login'%}?next={{request.path}}"><u>Log In</u></a> to view this page<p>
+                  <!-- Contact Form -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container -->
 
+        <!-- Footer -->
+        <footer class="py-5 ">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+          </div>
+          <!-- /.container -->
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'music_app/jquery.min.js'%}"></script>
+        <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+        <script type="text/javascript" src="js/registration_validate.js"></script>
+      </div>
+    </section>
+  {% endif %}
 </body>
 
 </html>
