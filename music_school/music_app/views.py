@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect
+from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib.auth.forms import UserCreationForm, authenticate, UserChangeForm
+from django.contrib.auth import authenticate
 from django.urls import reverse_lazy
 from django.views import generic
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 from music_app.forms import SignUpForm
 from music_app.models import schedule, Bookings
 
 def login(request):
-    return render(request, 'registration/login.html')
+        return render(request, 'registration/login.html')
 
 def index(request):
     return render(request, 'music_app/index.html')
