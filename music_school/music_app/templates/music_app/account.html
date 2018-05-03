@@ -71,10 +71,12 @@
                 <p> Username: {{ user }}</p>
                 <p> Full Name: {{ user.first_name }} {{ user.last_name }}</p>
                 <p> Email: {{ user.email }}</p>
-                <p> Age: {{ user.userprofile.age }}</p>
-                <p> Gender: {{ user.userprofile.gender }}</p>
-                <p> Address: {{ user.userprofile.address }}</p>
-                <p> Skill level: {{ user.userprofile.skill_level }}</p>
+                {% for item in data_list %}
+                  <p> Age: {{ item.age }}</p>
+                  <p> Gender: {{ item.gender }}</p>
+                  <p> Address: {{ item.address }}</p>
+                  <p> Skill level: {{ item.skill_level }}</p>
+                {% endfor %}
                 <button><a href="/music_app/account/edit/">Edit</a></button>
                 </div>
               </div>

@@ -10,7 +10,7 @@ from django.views import generic
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 from music_app.forms import SignUpForm
-from music_app.models import schedule, Bookings
+from music_app.models import schedule, Bookings, UserProfile
 
 def login(request):
         return render(request, 'registration/login.html')
@@ -315,7 +315,10 @@ def lessons(request):
     return render(request, 'music_app/lessons.html')
 
 def account(request):
-    return render(request, 'music_app/account.html')
+    if (request.method == 'GET'):
+        data_list = UserProfile.objects.filter(user=request.user)
+        context = {'data_list':data_list }
+        return render(request, 'music_app/account.html', context)
 
 # class SignUp(generic.CreateView):
 #     form_class = UserCreationForm
@@ -328,23 +331,23 @@ def account(request):
      #        text = form.cleaned_data['']
 
 
-def Profile(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST, user=request.user)
+# def Profile(request):
+#     if request.method == 'POST':
+#         form = SignUpForm(request.POST, user=request.user)
 
-        if form.is_valid():
-            form.save()
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            gender = form.cleaned_data['gender']
-            age = form.cleaned_data['age']
-            email = form.cleaned_data['email']
-            address = form.cleaned_data['address']
-            skill_level = form.cleaned_data['skill_level']
-            return redirect('dashboard')
-    else:
-        form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+#         if form.is_valid():
+#             form.save()
+#             first_name = form.cleaned_data['first_name']
+#             last_name = form.cleaned_data['last_name']
+#             gender = form.cleaned_data['gender']
+#             age = form.cleaned_data['age']
+#             email = form.cleaned_data['email']
+#             address = form.cleaned_data['address']
+#             skill_level = form.cleaned_data['skill_level']
+#             return redirect('dashboard')
+#     else:
+#         form = SignUpForm()
+#     return render(request, 'signup.html', {'form': form})
 
 # username = form.cleaned_data.get('username')
 # password = form.cleaned_data.get('password')
@@ -365,7 +368,27 @@ def SignUp(request):
 @login_required
 def edit_account(request):
     form = SignUpForm(request.POST, instance=request.user)
+    print(request.POST.get("first_name"))
+    user_id = request.user
     if form.is_valid():
+        existing_instance=UserProfile.objects.filter(user=request.user)
+        if (len(existing_instance) == 0):
+            new_instance=UserProfile(age=request.POST.get("age"), 
+            user=request.user, email=request.POST.get("email"), 
+            skill_level=request.POST.get("skill_level"), 
+            address=request.POST.get("address"), 
+            gender=request.POST.get("gender"))
+            new_instance.save()
+        else:
+            current_instance=existing_instance[0]
+            current_instance.skill_level=request.POST.get("skill_level")
+            current_instance.email=request.POST.get("email")
+            current_instance.gender=request.POST.get("gender")
+            current_instance.address=request.POST.get("address")
+            current_instance.age=request.POST.get("age")
+            current_instance.save()
+        
+        # new_instance.save()
         form.save()
         return redirect('/music_app/account/')
     return render(request, 'music_app/edit_account.html', {'form' : form})
