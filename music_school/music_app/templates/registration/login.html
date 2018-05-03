@@ -54,7 +54,13 @@
     </div>
   </nav>
 
+
+
   <!-- Page Content -->
+  <div>
+    <h1 class="my-4">Login</h1>
+  </div>
+
   <section class="page-section about-heading">
     <div class="container">
       <div class="about-heading-content">
@@ -63,7 +69,6 @@
             <div class="bg-faded rounded p-5">
               <h2 class="section-heading mb-4">
                 <span class="section-heading-upper"></span>
-                <span class="my-4">Login</span>
               </h2>
                 <!-- Contact Form -->
                 {% block content %}
@@ -84,23 +89,23 @@
                 <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
 
-                <div>
-                  <td>{{ form.username.label_tag }}</td>
+                <div align="center">
+                  <td>{{ form.username.label_tag }}</td><br>
                   <td>{{ form.username }}</td>
                 </div>
-                <div>
-                  <td>{{ form.password.label_tag }}</td>
+                <div align="center">
+                  <td>{{ form.password.label_tag }}</td><br>
                   <td>{{ form.password }}</td>
-                </div>
+                </div><br>
 
-                <div>
-                  <input type="submit" value="login" />
+                <div align="center">
+                  <input type="submit" value="Login" />
                   <input type="hidden" name="next" value="{{ next }}" />
                 </div>
                 </form>
 
                 {# Assumes you setup the password_reset view in your URLconf #}
-                <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                <p align="center"><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
                 {% endblock %}
                 </p>
