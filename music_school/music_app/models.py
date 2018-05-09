@@ -20,15 +20,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
-# @receiver(post_save, sender=User)
-# def create_or_update(sender, instance, created, **kwargs):
-#     print('herrr', instance)
-#     if created:
-#         UserProfile.objects.create(user=instance)
-
-#     # import pdb; pdb.set_trace()
-#     instance.profile.save()
-
 class admin(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=18)

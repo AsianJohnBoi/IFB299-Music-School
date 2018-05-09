@@ -65,10 +65,10 @@
               <div class="bg-faded rounded p-5">
                 <h2 class="section-heading mb-4">
                   <span class="section-heading-upper"></span>
-                  <span class="my-4">My Lessons</span>
-                  <!-- Contact Form -->
+                  <span class="my-4">Lessons</span>
+                  <!-- Bookings Content-->
                 </h2>
-                  <!-- Contact Form -->
+                  </script>
                   <table style="width: 100%"">
                     <tr>
                       <th>Instrument</th>
@@ -81,10 +81,37 @@
                       <td>{{item.schedule.Instrument}}</td>
                       <td>{{item.schedule.Date}}</td>
                       <td>{{item.schedule.Time|time:"H:i"}}</td>
-                      <td><button>Cancel Lesson</button></td>
+                      <td><button id="{{item.schedule.id}}" value="Teacher: {{item.schedule.teacher_id}}, Instrument: {{item.schedule.Instrument}}, Date: {{item.schedule.Date}}, Time: {{item.schedule.Time|time:'H:i'}}, Lesson id: {{item.schedule.Lesson_id}}"onclick="clicked(this.value, this.id)">Cancel Lesson</button></td>
                     </tr>
                     {% endfor %}
                   </table>
+                  <p></p>
+                  <span>
+                  <p><strong>*NOTE:</strong> All lesson times are in 24 hour format. You will receive a cancellation fee if you cancel 24 hours prior lesson. Click <a href="{% url 'bookings' %}">here</a> to book a lesson.</p>
+                  </p>
+                  </span>
+                  <script type="text/javascript">
+                  function clicked(value, id) {
+                     if (confirm('Confirm Cancellation? \n \n' + value + '\n\nYou will receive a cancellation fee if lesson is cancelled less than 24 hours prior lesson')) {
+                        $.ajax({'type': 'POST',
+                                'url': '/music_app/lessons/',
+                                 'data': {'id': id},
+                                 'success': function(resp) { 
+                                      if(resp.status == 'ok') {
+                                        alert('Lesson cancelled');
+                                      }
+                                      else {
+                                         alert(resp.message);
+                                      }
+                                  }
+                                });
+                      location.reload();                       
+                     } else {
+                         return false;
+                     }
+                  }
+                  </script>
+                </div>
                 </div>
               </div>
             </div>

@@ -55,6 +55,7 @@ def bookings(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Piano(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Instrument="Piano", Booked="NO")
@@ -76,7 +77,7 @@ def bookings_Piano(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
-
+@csrf_exempt
 def bookings_Claranet(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Instrument="Claranet", Booked="NO")
@@ -98,6 +99,7 @@ def bookings_Claranet(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Flute(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Instrument="Flute", Booked="NO")
@@ -119,6 +121,7 @@ def bookings_Flute(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Violin(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Instrument="Violin", Booked="NO")
@@ -140,6 +143,7 @@ def bookings_Violin(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Guitar(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Instrument="Guitar", Booked="NO")
@@ -161,6 +165,7 @@ def bookings_Guitar(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Trumpet(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Instrument="Trumpet", Booked="NO")
@@ -182,6 +187,7 @@ def bookings_Trumpet(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_English(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Language="English", Booked="NO")
@@ -203,6 +209,7 @@ def bookings_English(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Italian(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Booked="NO", Language="Italian")
@@ -224,6 +231,7 @@ def bookings_Italian(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_German(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Booked="NO", Language="German")
@@ -245,6 +253,7 @@ def bookings_German(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Spanish(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Booked="NO", Language="Spanish")
@@ -266,6 +275,7 @@ def bookings_Spanish(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_Chinese(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Booked="NO", Language="Chinese")
@@ -287,6 +297,7 @@ def bookings_Chinese(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
+@csrf_exempt
 def bookings_French(request):
     if (request.method == 'GET'):
         data_list = schedule.objects.filter(Booked="NO", Language="French")
@@ -313,10 +324,26 @@ def dashboard(request):
     context = {'user_bookings':user_bookings}
     return render(request, 'music_app/dashboard.html', context)
 
+@csrf_exempt
 def lessons(request):
-    user_bookings = Bookings.objects.filter(student__id=request.user.id).select_related('schedule');
-    context = {'user_bookings':user_bookings}
-    return render(request, 'music_app/lessons.html', context)
+    if (request.method == 'GET'):
+        user_bookings = Bookings.objects.filter(student__id=request.user.id).select_related('schedule');
+        return render(request, 'music_app/lessons.html', {'user_bookings':user_bookings})
+
+    else:
+        try:
+            schedule_id = int(request.POST.get('id'))
+            # bookings.objects.filter(schedule_id=schedule_id).delete()
+            instance = Bookings.objects.filter(schedule_id=schedule_id)
+            instance.delete()
+            schedule.objects.filter(id=schedule_id).update(Booked='NO')
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Schedule does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
 def account(request):
     if (request.method == 'GET'):
@@ -324,37 +351,6 @@ def account(request):
         context = {'data_list':data_list }
         return render(request, 'music_app/account.html', context)
 
-# class SignUp(generic.CreateView):
-#     form_class = UserCreationForm
-#     success_url = reverse_lazy('login')
-#     template_name = 'signup.html'
-
-     # def post(self, request):
-     #    form = SignUpForm(request.POST)
-     #    if form.is_valid():
-     #        text = form.cleaned_data['']
-
-
-# def Profile(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST, user=request.user)
-
-#         if form.is_valid():
-#             form.save()
-#             first_name = form.cleaned_data['first_name']
-#             last_name = form.cleaned_data['last_name']
-#             gender = form.cleaned_data['gender']
-#             age = form.cleaned_data['age']
-#             email = form.cleaned_data['email']
-#             address = form.cleaned_data['address']
-#             skill_level = form.cleaned_data['skill_level']
-#             return redirect('dashboard')
-#     else:
-#         form = SignUpForm()
-#     return render(request, 'signup.html', {'form': form})
-
-# username = form.cleaned_data.get('username')
-# password = form.cleaned_data.get('password')
 def SignUp(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
