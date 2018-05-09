@@ -92,21 +92,11 @@
         <div class="card h-100">
           <h3 class="card-header">Upcoming Lessons</h3>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Today
-            <a href="..\bookings" class="btn btn-primary">Book</a>
+            {% for item in user_bookings %}
+            <li class="list-group-item"><a href="..\lessons">{{item.schedule.Instrument}} - {{item.schedule.Date}}, {{item.schedule.Time|time:"H:i"}}</a></li>
             </li>
-            <li class="list-group-item">Tomorrow
-            <a href="..\bookings" class="btn btn-primary">Book</a>
-            </li>
-            <li class="list-group-item">Thursday
-            <a href="..\bookings" class="btn btn-primary">Book</a>
-            </li>
-            <li class="list-group-item">Friday
-            <a href="..\bookings" class="btn btn-primary">Book</a>
-            </li>
-            <li class="list-group-item">
-              <a href="..\bookings" class="btn btn-primary">Book More</a>
-            </li>
+
+            {% endfor %}
           </ul>
         </div>
       </div>

@@ -67,6 +67,24 @@
                   <span class="section-heading-upper"></span>
                   <span class="my-4">My Lessons</span>
                   <!-- Contact Form -->
+                </h2>
+                  <!-- Contact Form -->
+                  <table style="width: 100%"">
+                    <tr>
+                      <th>Instrument</th>
+                      <th>Date</th>
+                      <th>Lesson Time</th>
+                      <th>Cancel</th>
+                    </tr>
+                    {% for item in user_bookings %}
+                    <tr>
+                      <td>{{item.schedule.Instrument}}</td>
+                      <td>{{item.schedule.Date}}</td>
+                      <td>{{item.schedule.Time|time:"H:i"}}</td>
+                      <td><button>Cancel Lesson</button></td>
+                    </tr>
+                    {% endfor %}
+                  </table>
                 </div>
               </div>
             </div>

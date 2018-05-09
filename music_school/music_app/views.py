@@ -309,10 +309,14 @@ def bookings_French(request):
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
 def dashboard(request):
-    return render(request, 'music_app/dashboard.html')
+    user_bookings = Bookings.objects.filter(student__id=request.user.id).select_related('schedule');
+    context = {'user_bookings':user_bookings}
+    return render(request, 'music_app/dashboard.html', context)
 
 def lessons(request):
-    return render(request, 'music_app/lessons.html')
+    user_bookings = Bookings.objects.filter(student__id=request.user.id).select_related('schedule');
+    context = {'user_bookings':user_bookings}
+    return render(request, 'music_app/lessons.html', context)
 
 def account(request):
     if (request.method == 'GET'):
