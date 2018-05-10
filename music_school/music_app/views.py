@@ -33,6 +33,9 @@ def pricing(request):
 def reg_form(request):
     return render(request, 'music_app/reg_form.html')
 
+def teacher_details(request):
+    return render(request, 'music_app/teacher_details.html')
+
 @csrf_exempt
 def bookings(request):
     if (request.method == 'GET'):
@@ -173,7 +176,7 @@ def bookings_Trumpet(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -217,7 +220,7 @@ def bookings_Italian(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -239,7 +242,7 @@ def bookings_German(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -261,7 +264,7 @@ def bookings_Spanish(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -283,7 +286,7 @@ def bookings_Chinese(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -305,7 +308,7 @@ def bookings_French(request):
         return render(request, 'music_app/bookings.html', context)
 
     else:
-        
+
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -373,10 +376,10 @@ def edit_account(request):
     if form.is_valid():
         existing_instance=UserProfile.objects.filter(user=request.user)
         if (len(existing_instance) == 0):
-            new_instance=UserProfile(age=request.POST.get("age"), 
-            user=request.user, email=request.POST.get("email"), 
-            skill_level=request.POST.get("skill_level"), 
-            address=request.POST.get("address"), 
+            new_instance=UserProfile(age=request.POST.get("age"),
+            user=request.user, email=request.POST.get("email"),
+            skill_level=request.POST.get("skill_level"),
+            address=request.POST.get("address"),
             gender=request.POST.get("gender"))
             new_instance.save()
         else:
@@ -387,7 +390,7 @@ def edit_account(request):
             current_instance.address=request.POST.get("address")
             current_instance.age=request.POST.get("age")
             current_instance.save()
-        
+
         # new_instance.save()
         form.save()
         return redirect('/music_app/account/')
