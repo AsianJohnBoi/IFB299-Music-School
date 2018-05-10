@@ -11,6 +11,17 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 from music_app.forms import SignUpForm
 from music_app.models import schedule, Bookings, UserProfile
+import time
+from datetime import date, datetime, timedelta
+
+teacherslist = [1, 2, 3, 4, 5, 6]
+# ['Andy Garrett', 'Mika Williams', 'Milly Buxton', 'David Bernal', 'Luke Holmes', 'Caleb Dixon']
+languageslist = ['English', 'German', 'Spanish', 'Italian', 'French']
+instrumentlist = ['Violin', 'Flute', 'Piano', 'Claranet', 'Trumpet', 'Guitar']
+timelist = ['10:00', '10:30', '11:00','11:30', 
+        '12:00','12:30','13:00','13:30',
+        '14:00','14:30','15:00','15:30',
+        '16:00','16:30','17:00', '18:00']
 
 def login(request):
         return render(request, 'registration/login.html')
@@ -36,6 +47,34 @@ def reg_form(request):
 @csrf_exempt
 def bookings(request):
     if (request.method == 'GET'):
+        dates = []
+        #Gets current days
+        today = date.today()
+        #Gets the date after 14 days of variable 'today'
+        end_date = today + timedelta(7)
+        bookedString = 'NO'
+
+        #puts dates in array
+        for y in range(0, 7):
+            dates.append(today + timedelta(y))
+
+        for i in range(0, 7): #next 7 days, 1 to 7
+            dateChosen = dates[i]
+
+
+            for x in range(0, 16): #lesson times, 10am to 6pm, 1 to 16 lessons
+                timeChosen = timelist[x]
+                for x in range (1, 6):
+                    instrumentChosen = instrumentlist[x]
+                    teacherChosen = teacherslist[x]
+                    languageChosen = 'English'
+                    created = schedule.objects.get_or_create(Instrument=instrumentChosen, 
+                                Date=dateChosen,
+                                Time=timeChosen,
+                                Lesson_id=instrumentChosen + timeChosen + '-' + str(dateChosen),
+                                Booked=bookedString,
+                                teacher_id=teacherChosen,
+                                Language=languageChosen)
         data_list = schedule.objects.filter(Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
@@ -329,7 +368,6 @@ def lessons(request):
     if (request.method == 'GET'):
         user_bookings = Bookings.objects.filter(student__id=request.user.id).select_related('schedule');
         return render(request, 'music_app/lessons.html', {'user_bookings':user_bookings})
-
     else:
         try:
             schedule_id = int(request.POST.get('id'))

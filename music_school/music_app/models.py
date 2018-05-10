@@ -32,6 +32,7 @@ class instrument(models.Model):
 class teacher(models.Model):
     name = models.CharField(max_length=250, null=False)
     room = models.IntegerField(null=False)
+    instrument = models.ForeignKey(instrument, on_delete=models.CASCADE)
 
 class schedule(models.Model):
     teacher = models.ForeignKey(teacher, on_delete=models.CASCADE)
