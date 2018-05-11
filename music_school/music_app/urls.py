@@ -24,6 +24,7 @@ urlpatterns = [
     path('bookings_Chinese/', views.bookings_Chinese, name='bookings_Chinese'),
     path('bookings_French/', views.bookings_French, name='bookings_French'),
     path('lessons/', views.lessons, name='lessons'),
+    path('instrument/', views.instrument, name='instrument'),
     path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('account/', views.account, name='account'),

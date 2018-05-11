@@ -18,7 +18,7 @@ teacherslist = [1, 2, 3, 4, 5, 6]
 # ['Andy Garrett', 'Mika Williams', 'Milly Buxton', 'David Bernal', 'Luke Holmes', 'Caleb Dixon']
 languageslist = ['English', 'German', 'Spanish', 'Italian', 'French']
 instrumentlist = ['Violin', 'Flute', 'Piano', 'Claranet', 'Trumpet', 'Guitar']
-timelist = ['10:00', '10:30', '11:00','11:30', 
+timelist = ['10:00', '10:30', '11:00','11:30',
         '12:00','12:30','13:00','13:30',
         '14:00','14:30','15:00','15:30',
         '16:00','16:30','17:00', '18:00']
@@ -28,6 +28,9 @@ def login(request):
 
 def index(request):
     return render(request, 'music_app/index.html')
+
+def instrument(request):
+        return render(request, 'music_app/instrument.html')
 
 def about(request):
     return render(request, 'music_app/about.html')
@@ -71,7 +74,7 @@ def bookings(request):
                     instrumentChosen = instrumentlist[x]
                     teacherChosen = teacherslist[x]
                     languageChosen = 'English'
-                    created = schedule.objects.get_or_create(Instrument=instrumentChosen, 
+                    created = schedule.objects.get_or_create(Instrument=instrumentChosen,
                                 Date=dateChosen,
                                 Time=timeChosen,
                                 Lesson_id=instrumentChosen + timeChosen + '-' + str(dateChosen),
