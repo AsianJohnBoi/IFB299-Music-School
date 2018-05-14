@@ -46,6 +46,9 @@
               <a class="nav-link" href="{% url 'lessons' %}">My Lessons</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'teacher_details' %}">Contact Teacher</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'account' %}">Account</a>
             </li>
             <li class="nav-item">
@@ -96,7 +99,7 @@
                         $.ajax({'type': 'POST',
                                 'url': '/music_app/lessons/',
                                  'data': {'id': id},
-                                 'success': function(resp) { 
+                                 'success': function(resp) {
                                       if(resp.status == 'ok') {
                                         alert('Lesson cancelled');
                                       }
@@ -105,7 +108,7 @@
                                       }
                                   }
                                 });
-                      location.reload();                       
+                      location.reload();
                      } else {
                          return false;
                      }
