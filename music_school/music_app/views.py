@@ -32,6 +32,9 @@ def index(request):
 def instrument(request):
         return render(request, 'music_app/instrument.html')
 
+def payment(request):
+    return render(request, 'music_app/payment.html')
+
 def about(request):
     return render(request, 'music_app/about.html')
 

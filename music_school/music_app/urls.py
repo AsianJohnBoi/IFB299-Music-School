@@ -25,6 +25,7 @@ urlpatterns = [
     path('bookings_French/', views.bookings_French, name='bookings_French'),
     path('lessons/', views.lessons, name='lessons'),
     path('instrument/', views.instrument, name='instrument'),
+    path('payment/', views.payment, name='payment'),
     path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('account/', views.account, name='account'),
