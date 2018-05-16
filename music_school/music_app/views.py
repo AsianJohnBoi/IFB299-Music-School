@@ -50,8 +50,6 @@ def pricing(request):
 def reg_form(request):
     return render(request, 'music_app/reg_form.html')
 
-def teacher_details(request):
-    return render(request, 'music_app/teacher_details.html')
 
 @csrf_exempt
 def bookings(request):
