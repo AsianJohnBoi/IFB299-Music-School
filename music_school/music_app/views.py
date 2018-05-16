@@ -10,12 +10,12 @@ from django.views import generic
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 from music_app.forms import SignUpForm
-from music_app.models import schedule, Bookings, UserProfile
+from music_app.models import schedule, Bookings, UserProfile, teacher
 import time
 from datetime import date, datetime, timedelta
 
 teacherslist = [1, 2, 3, 4, 5, 6]
-# ['Andy Garrett', 'Mika Williams', 'Milly Buxton', 'David Bernal', 'Luke Holmes', 'Caleb Dixon']
+teacherNames = ['Mika Williams', 'Andy Garrett', 'Milly Buxton', 'David Bernal', 'Luke Holmes', 'Caleb Dixon ']
 languageslist = ['English', 'German', 'Spanish', 'Italian', 'French']
 instrumentlist = ['Violin', 'Flute', 'Piano', 'Claranet', 'Trumpet', 'Guitar']
 timelist = ['10:00', '10:30', '11:00','11:30',
@@ -54,6 +54,13 @@ def reg_form(request):
 @csrf_exempt
 def bookings(request):
     if (request.method == 'GET'):
+        #Makes sure teachers are on the database, if not create the teachers
+        for b in range(0, 6):
+            addTeacher = teacherNames[b]
+            roomNO = teacherslist[b]
+            created = teacher.objects.get_or_create(name=addTeacher, room=roomNO)
+
+
         dates = []
         #Gets current days
         today = date.today()
