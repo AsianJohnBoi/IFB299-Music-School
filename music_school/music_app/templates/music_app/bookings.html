@@ -43,9 +43,11 @@
               <a class="nav-link" href="{% url 'bookings' %}">Bookings</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'lessons' %}">My Lessons</a>
+              <a class="nav-link" href="{% url 'lessons' %}">Lessons</a>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'instrument' %}">Instruments</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'account' %}">Account</a>
             </li>
@@ -108,13 +110,13 @@
 
                     const $select2 = $('select[name="staff_filter"]');
                     const opts2 = [
-                      {'value':'{% url 'bookings' %}', 'text':'All'},
-                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Alexander Colin, ID:498162'},
-                      {'value':'{% url 'bookings_Piano' %}', 'text':'Lee Lin Shin, ID: 129376'},
-                      {'value':'{% url 'bookings_Claranet' %}', 'text':'Tim Umtiti, ID: 234985'},
-                      {'value':'{% url 'bookings_Violin' %}', 'text':'Chumun Li, ID: 239764'},
-                      {'value':'{% url 'bookings_Flute' %}', 'text':'Xu Xian, ID: 462301'},
-                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Liam Cousins, ID: 569845'},
+                      {'value':'{% url 'bookings' %}', 'text':'All'}, 
+                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Mika Williams'},
+                      {'value':'{% url 'bookings_Piano' %}', 'text':'Andy Garrett'},
+                      {'value':'{% url 'bookings_Claranet' %}', 'text':'Milly Buxton'},
+                      {'value':'{% url 'bookings_Violin' %}', 'text':'David Bernal'},
+                      {'value':'{% url 'bookings_Flute' %}', 'text':'Luke Holmes'},
+                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Caleb Dixon'},
                     ];
 
                     opts2.forEach(function(obj){

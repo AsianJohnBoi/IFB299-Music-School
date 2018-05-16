@@ -10,18 +10,19 @@ from django.views import generic
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 from music_app.forms import SignUpForm
-from music_app.models import schedule, Bookings, UserProfile, teacher
+from music_app.models import schedule, Bookings, UserProfile, teacher, instrument
 import time
 from datetime import date, datetime, timedelta
 
 teacherslist = [1, 2, 3, 4, 5, 6]
-teacherNames = ['Mika Williams', 'Andy Garrett', 'Milly Buxton', 'David Bernal', 'Luke Holmes', 'Caleb Dixon ']
+teacherNames = ['Mika Williams', 'Andy Garrett', 'Milly Buxton', 'David Bernal', 'Luke Holmes', 'Caleb Dixon']
 languageslist = ['English', 'German', 'Spanish', 'Italian', 'French']
 instrumentlist = ['Violin', 'Flute', 'Piano', 'Claranet', 'Trumpet', 'Guitar']
 timelist = ['10:00', '10:30', '11:00','11:30',
         '12:00','12:30','13:00','13:30',
         '14:00','14:30','15:00','15:30',
         '16:00','16:30','17:00', '18:00']
+theinstruments = instrument
 
 def login(request):
         return render(request, 'registration/login.html')
@@ -30,7 +31,30 @@ def index(request):
     return render(request, 'music_app/index.html')
 
 def instrument(request):
+    if (request.method == 'GET'):
+        amount = 100
+        for x in range(0, 6):
+            created = theinstruments.objects.get_or_create(instrument_name=instrumentlist[x], quantity=amount) #instrument_name, quantity
         return render(request, 'music_app/instrument.html')
+
+    # else:
+    #     try:
+            # schedule_id = int(request.POST.get('id'))
+            # sched = schedule.objects.get(id = schedule_id)
+            # booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
+            # schedule.objects.filter(id=schedule_id).update(Booked='YES')
+
+            
+        #     return JsonResponse({'status': 'ok'})
+        # except schedule.DoesNotExist:
+        #     return JsonResponse({'status':'error', 'message': 'Instrument does not exists'})
+        # except ValueError:
+        #     import traceback
+        #     traceback.print_exc()
+        #     return JsonResponse({'status':'error', 'message': 'Invalid instrument id'})
+    # data_list = theinstruments.objects.all()
+    # context = {'data_list':data_list }
+    return render(request, 'music_app/instrument.html')
 
 def payment(request):
     return render(request, 'music_app/payment.html')
@@ -68,10 +92,15 @@ def bookings(request):
         end_date = today + timedelta(7)
         bookedString = 'NO'
 
+        #Delete all lessons in schedule table that haven't been booked
+        #Gets rid of old dates
+        schedule.objects.filter(Booked="NO").delete()
+
         #puts dates in array
         for y in range(0, 7):
             dates.append(today + timedelta(y))
 
+        #add lessons
         for i in range(0, 7): #next 7 days, 1 to 7
             dateChosen = dates[i]
 
