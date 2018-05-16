@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     GENDER_CHOICES = [('M', 'Male'),('F', 'Female')]
     gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=False)
     age = models.IntegerField(null=False)
-    email = models.CharField(max_length=250) 
+    email = models.CharField(max_length=250)
     address = models.CharField(max_length=250)
     skill_level = models.CharField(choices=SKILLS_CHOICES,max_length=12, blank=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, related_name='profile')
@@ -26,7 +26,6 @@ class admin(models.Model):
 
 class instrument(models.Model):
     instrument_name = models.CharField(max_length=250)
-    instrument_category = models.CharField(max_length=100)
     quantity = models.IntegerField(null=True)
 
 class teacher(models.Model):
