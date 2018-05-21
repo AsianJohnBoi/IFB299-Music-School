@@ -184,6 +184,7 @@
                                'success': function(resp) {
                                     if(resp.status == 'ok') {
                                       alert('Payment confirmed! Instrument Hired!');
+                                      window.location.href = "{% url 'instrument' %}"
                                     }
                                     else {
                                        alert(resp.message);
