@@ -86,19 +86,16 @@
                       <div class="row">
                         <div class="col-md-12">
                            <div class="form-group">
-                              <div class="col-md-9">
+                              <span>
                                 <p>Purchasing Instrument:
-                                 <select id="one" name="sub" class="form-control" onchange="myFunction(this.value)">
-                                    <option value="Piano" id="Piano">--------------Select--------------</option>
-                                    <option value="Piano" id="Piano">Piano</option>
-                                    <option value="Guitar" id="Guitar">Guitar</option>
-                                    <option value="Flute" id="Flute">Flute</option>
-                                    <option value="Saxophone" id="Saxophone">Saxophone</option>
-                                    <option value="Violin" id="Violin">Violin</option>
-                                    <option value="Drums" id="Drums">Drums</option>
+                                 <select id="one" name="sub" onchange="myFunction(this.value)">
+                                    <option value="NoValue" id="NoValue">--------------Select--------------</option>
+                                    {% for item in data_list %}
+                                    <option value="{{item.instrument_name}}" id="{{item.instrument_name}}">{{item.instrument_name}}</option>
+                                    {% endfor %}
                                  </select>
                                  </p>
-                              </div>
+                              </span>
                            </div>
                         </div>
                       </div>
@@ -168,11 +165,18 @@
                             </div> 
                           </div>
                         </div> 
+                        <span>
+                          <p> </p>
+                        </span>
                         <div class="form-group">
-                            <div class="col-md-9">
-                               <button type="submit" name="submit" id="" onclick="clicked(this.id)">Submit</button>
-                            </div>
-                         </div>
+                          <button type="submit" name="submit" id="" onclick="clicked(this.id)">Submit</button>
+                        </div>
+                        <span>
+                          <p> </p>
+                        </span>
+                        <span>
+                          <p><strong>*NOTE:</strong> Instruments in the dropdown menu is subject to availability. Please contact us if there are any issues.</p>
+                        </span>
                       </form>
                       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
                       <script type="text/javascript">

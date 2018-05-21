@@ -19,7 +19,7 @@ from datetime import date, datetime, timedelta
 teacherslist = [1, 2, 3, 4, 5, 6]
 teacherNames = ['Mika Williams', 'Andy Garrett', 'Milly Buxton', 'David Bernal', 'Luke Holmes', 'Caleb Dixon']
 languageslist = ['English', 'German', 'Spanish', 'Italian', 'French']
-instrumentlist = ['Violin', 'Flute', 'Piano', 'Claranet', 'Trumpet', 'Guitar']
+instrumentlist = ['Violin', 'Flute', 'Piano', 'Saxophone', 'Drums', 'Guitar']
 timelist = ['10:00', '10:30', '11:00','11:30',
         '12:00','12:30','13:00','13:30',
         '14:00','14:30','15:00','15:30',
@@ -45,7 +45,9 @@ def instrumentPage(request):
 @csrf_exempt
 def paymentPage(request):
     if (request.method == 'GET'):
-        return render(request, 'music_app/payment.html')
+        data_list = theinstruments.objects.filter(quantity__gt=0)
+        context = {'data_list':data_list }
+        return render(request, 'music_app/payment.html', context)
     else:
         try:
             instrumentHiring = str(request.POST.get('id'))
