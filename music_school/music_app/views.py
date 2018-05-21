@@ -36,7 +36,10 @@ def instrumentPage(request):
     if (request.method == 'GET'):
         amount = 100
         for x in range(0, 6):
-            created = theinstruments.objects.get_or_create(instrument_name=instrumentlist[x], quantity=amount) #instrument_name, quantity
+            if theinstruments.objects.filter(instrument_name=instrumentlist[x]).exists():
+                continue
+            else:
+                created = theinstruments.objects.get_or_create(instrument_name=instrumentlist[x], quantity=amount)
         return render(request, 'music_app/instrument.html')
 
 @csrf_exempt
@@ -48,7 +51,7 @@ def paymentPage(request):
             instrumentHiring = str(request.POST.get('id'))
             theinstruments.objects.filter(instrument_name=instrumentHiring).update(quantity=F('quantity') - 1)
             return JsonResponse({'status': 'ok'})
-        except schedule.DoesNotExist:
+        except theinstruments.DoesNotExist:
             return JsonResponse({'status':'error', 'message': 'Instrument does not exists'})
         except ValueError:
             import traceback
