@@ -4,13 +4,13 @@ from django.views.generic.base import TemplateView
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
-    path('services/', views.services, name='services'),
-    path('contact/', views.contact, name='contact'),
-    path('pricing/', views.pricing, name='pricing'),
-    path('reg_form/', views.reg_form, name='reg_form'),
-    path('bookings/', views.bookings, name='bookings'), #displays all available lessons teaching any instrument
+    path('', views.indexPage, name='index'),
+    path('about/', views.aboutPage, name='about'),
+    path('services/', views.servicesPage, name='services'),
+    path('contact/', views.contactPage, name='contact'),
+    path('pricing/', views.pricingPage, name='pricing'),
+    path('reg_form/', views.reg_formPage, name='reg_form'),
+    path('bookings/', views.bookingsPage, name='bookings'), #displays all available lessons teaching any instrument
     path('bookings_Piano/', views.bookings_Piano, name='bookings_Piano'), #displays lessons for Piano
     path('bookings_Claranet/', views.bookings_Claranet, name='bookings_Claranet'), #displays lessons for Claranet
     path('bookings_Flute/', views.bookings_Flute, name='bookings_Flute'), #displays lessons for flute
@@ -23,16 +23,14 @@ urlpatterns = [
     path('bookings_German/', views.bookings_German, name='bookings_German'),
     path('bookings_Chinese/', views.bookings_Chinese, name='bookings_Chinese'),
     path('bookings_French/', views.bookings_French, name='bookings_French'),
-    path('lessons/', views.lessons, name='lessons'),
-    path('instrument/', views.instrument, name='instrument'),
-    
-    path('payment/', views.payment, name='payment'),
+    path('lessons/', views.lessonsPage, name='lessons'),
+    path('instrument/', views.instrumentPage, name='instrument'),  
+    path('payment/', views.paymentPage, name='payment'),
     path('admin/', admin.site.urls),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('account/', views.account, name='account'),
-    path('account/login/', views.account, name='login'),
+    path('dashboard/', views.dashboardPage, name='dashboard'),
+    path('account/', views.accountPage, name='account'),
+    path('account/login/', views.accountPage, name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('signup/', views.SignUp, name='signup'),
-    path('account/edit/', views.edit_account, name='edit_account'),
-    # path('account/profile/', views.Profile, name='profile')
+    path('signup/', views.SignUpPage, name='signup'),
+    path('account/edit/', views.edit_accountPage, name='edit_account'),
 ]

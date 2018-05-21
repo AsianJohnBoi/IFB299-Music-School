@@ -18,12 +18,28 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 
-  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-
 
   <!-- Custom styles for this template -->
   <link href="{% static 'music_app/business-casual.css' %}" rel="stylesheet">
   <link href="{% static 'music_app/style.css' %}" rel="stylesheet">
+
+  <!--Javasript Validation File Import -->
+  <script type="text/javascript" src="js/validation.js"></script>
+  <script type="text/javascript" src="js/formreg.js"></script>
+  <script type="text/javascript" language="JavaScript"></script>
+
+  <script>
+        function myFunction(new_id) {
+            if (new_id == 0) {
+                return;
+            }
+            document.getElementsByName("submit")[0].id = new_id;
+            
+            // Testing id, assigns selected dropdown as the button's id
+            // remove this after testing
+            // alert(document.getElementById(new_id).id);
+        }
+    </script>
 
 </head>
 
@@ -67,11 +83,29 @@
                   </h2>
                   <div class="row">
                     <div class="card-body p-5">
+                      <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <div class="col-md-9">
+                                <p>Purchasing Instrument:
+                                 <select id="one" name="sub" class="form-control" onchange="myFunction(this.value)">
+                                    <option value="Piano" id="Piano">--------------Select--------------</option>
+                                    <option value="Piano" id="Piano">Piano</option>
+                                    <option value="Guitar" id="Guitar">Guitar</option>
+                                    <option value="Flute" id="Flute">Flute</option>
+                                    <option value="Saxophone" id="Saxophone">Saxophone</option>
+                                    <option value="Violin" id="Violin">Violin</option>
+                                    <option value="Drums" id="Drums">Drums</option>
+                                 </select>
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                      </div>
                       <p> <img src="http://bootstrap-ecommerce.com/main/images/icons/pay-visa.png">
                         <img src="http://bootstrap-ecommerce.com/main/images/icons/pay-mastercard.png">
                         <img src="http://bootstrap-ecommerce.com/main/images/icons/pay-american-ex.png">
                       </p>
-
                       <form role="form">
                         <div class="form-group">
                           <label for="username">Full name (on the card)</label>
@@ -80,8 +114,8 @@
                               <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
                             <input type="text" class="form-control" name="username" placeholder="Please Enter Your Full Name" required>
-                          </div> <!-- input-group.// -->
-                        </div> <!-- form-group.// -->
+                          </div> 
+                        </div> 
 
                         <div class="form-group">
                           <label for="cardNumber">Card number</label>
@@ -90,8 +124,8 @@
                               <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
                             </div>
                             <input type="text" class="form-control" name="cardNumber" placeholder="Please Enter Your Card Number" required>
-                          </div> <!-- input-group.// -->
-                        </div> <!-- form-group.// -->
+                          </div> 
+                        </div> 
 
                         <div class="row">
                           <div class="col-sm-8">
@@ -131,29 +165,38 @@
                                 <i class="fa fa-question-circle"></i>
                               </label>
                               <input type="text" class="form-control" name="username" placeholder="CVV" required>
-                            </div> <!-- form-group.// -->
+                            </div> 
                           </div>
-                        </div> <!-- row.// -->
-                        <!-- <button class="btn btn-primary" type="submit" onclick="clicked()""><a href="{% url 'index' %}">Submit</a></button> -->
+                        </div> 
+                        <div class="form-group">
+                            <div class="col-md-9">
+                               <button type="submit" name="submit" id="" onclick="clicked(this.id)">Submit</button>
+                            </div>
+                         </div>
                       </form>
-                      <!-- <script type="text/javascript">
-                      function clicked(value) {
-                        $.ajax({'type': 'POST',
-                                'url': '/music_app/payment/',
-                                 'data': {'id': id},
-                                 'success': function(resp) {
-                                      if(resp.status == 'ok') {
-                                        alert('Instrument Hired!');
-                                      }
-                                      else {
-                                         alert(resp.message);
-                                      }
-                                  }
-                                });
-                        location.reload();
+                      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+                      <script type="text/javascript">
+                      function clicked(id) {
+                        if (confirm('Confirm Payment for ' + id + '?')) {
+                            $.ajax({'type': 'POST',
+                              'url': '/music_app/payment/',
+                               'data': {'id': id},
+                               'success': function(resp) {
+                                    if(resp.status == 'ok') {
+                                      alert('Payment confirmed! Instrument Hired!');
+                                    }
+                                    else {
+                                       alert(resp.message);
+                                    }
+                                }
+                              });
+                          location.reload();
+                         } else {
+                             return false;
+                         }
                       }
-                      </script> -->
-                    </div> <!-- card-body.// -->
+                      </script>
+                    </div> 
                   </div>
                 </div>
               </div>

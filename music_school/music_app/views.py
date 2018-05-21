@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.db.models import F
+
 
 from music_app.forms import SignUpForm
 from music_app.models import schedule, Bookings, UserProfile, teacher, instrument
@@ -24,59 +26,53 @@ timelist = ['10:00', '10:30', '11:00','11:30',
         '16:00','16:30','17:00', '18:00']
 theinstruments = instrument
 
-def login(request):
+def loginPage(request):
         return render(request, 'registration/login.html')
 
-def index(request):
+def indexPage(request):
     return render(request, 'music_app/index.html')
 
-def instrument(request):
+def instrumentPage(request):
     if (request.method == 'GET'):
         amount = 100
         for x in range(0, 6):
             created = theinstruments.objects.get_or_create(instrument_name=instrumentlist[x], quantity=amount) #instrument_name, quantity
         return render(request, 'music_app/instrument.html')
 
-    # else:
-    #     try:
-            # schedule_id = int(request.POST.get('id'))
-            # sched = schedule.objects.get(id = schedule_id)
-            # booking, created = Bookings.objects.get_or_create(schedule=sched, student=request.user)
-            # schedule.objects.filter(id=schedule_id).update(Booked='YES')
+@csrf_exempt
+def paymentPage(request):
+    if (request.method == 'GET'):
+        return render(request, 'music_app/payment.html')
+    else:
+        try:
+            instrumentHiring = str(request.POST.get('id'))
+            theinstruments.objects.filter(instrument_name=instrumentHiring).update(quantity=F('quantity') - 1)
+            return JsonResponse({'status': 'ok'})
+        except schedule.DoesNotExist:
+            return JsonResponse({'status':'error', 'message': 'Instrument does not exists'})
+        except ValueError:
+            import traceback
+            traceback.print_exc()
+            return JsonResponse({'status':'error', 'message': 'Invalid Instrument'})
 
-            
-        #     return JsonResponse({'status': 'ok'})
-        # except schedule.DoesNotExist:
-        #     return JsonResponse({'status':'error', 'message': 'Instrument does not exists'})
-        # except ValueError:
-        #     import traceback
-        #     traceback.print_exc()
-        #     return JsonResponse({'status':'error', 'message': 'Invalid instrument id'})
-    # data_list = theinstruments.objects.all()
-    # context = {'data_list':data_list }
-    return render(request, 'music_app/instrument.html')
-
-def payment(request):
-    return render(request, 'music_app/payment.html')
-
-def about(request):
+def aboutPage(request):
     return render(request, 'music_app/about.html')
 
-def services(request):
+def servicesPage(request):
     return render(request, 'music_app/services.html')
 
-def contact(request):
+def contactPage(request):
     return render(request, 'music_app/contact.html')
 
-def pricing(request):
+def pricingPage(request):
     return render(request, 'music_app/pricing.html')
 
-def reg_form(request):
+def reg_formPage(request):
     return render(request, 'music_app/reg_form.html')
 
 
 @csrf_exempt
-def bookings(request):
+def bookingsPage(request):
     if (request.method == 'GET'):
         #Makes sure teachers are on the database, if not create the teachers
         for b in range(0, 6):
@@ -341,9 +337,7 @@ def bookings_Spanish(request):
         data_list = schedule.objects.filter(Booked="NO", Language="Spanish")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
-
     else:
-
         try:
             schedule_id = int(request.POST.get('id'))
             sched = schedule.objects.get(id = schedule_id)
@@ -401,13 +395,13 @@ def bookings_French(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
-def dashboard(request):
+def dashboardPage(request):
     user_bookings = Bookings.objects.filter(student__id=request.user.id).select_related('schedule');
     context = {'user_bookings':user_bookings}
     return render(request, 'music_app/dashboard.html', context)
 
 @csrf_exempt
-def lessons(request):
+def lessonsPage(request):
     if (request.method == 'GET'):
         user_bookings = Bookings.objects.filter(student__id=request.user.id).select_related('schedule');
         return render(request, 'music_app/lessons.html', {'user_bookings':user_bookings})
@@ -426,13 +420,13 @@ def lessons(request):
             traceback.print_exc()
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
-def account(request):
+def accountPage(request):
     if (request.method == 'GET'):
         data_list = UserProfile.objects.filter(user=request.user)
         context = {'data_list':data_list }
         return render(request, 'music_app/account.html', context)
 
-def SignUp(request):
+def SignUpPage(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -447,7 +441,7 @@ def SignUp(request):
     return render(request, 'signup.html', {'form': form})
 
 @login_required
-def edit_account(request):
+def edit_accountPage(request):
     form = SignUpForm(request.POST, instance=request.user)
     print(request.POST.get("first_name"))
     user_id = request.user
