@@ -82,6 +82,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'music_app/jquery.min.js' %}"></script>
   <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+  <!-- Analytics script -->
 
 </body>
 
