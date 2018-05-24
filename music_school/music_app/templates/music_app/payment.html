@@ -34,7 +34,7 @@
                 return;
             }
             document.getElementsByName("submit")[0].id = new_id;
-            
+
             // Testing id, assigns selected dropdown as the button's id
             // remove this after testing
             // alert(document.getElementById(new_id).id);
@@ -111,8 +111,8 @@
                               <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
                             <input type="text" class="form-control" name="username" placeholder="Please Enter Your Full Name" required>
-                          </div> 
-                        </div> 
+                          </div>
+                        </div>
 
                         <div class="form-group">
                           <label for="cardNumber">Card number</label>
@@ -121,8 +121,8 @@
                               <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
                             </div>
                             <input type="text" class="form-control" name="cardNumber" placeholder="Please Enter Your Card Number" required>
-                          </div> 
-                        </div> 
+                          </div>
+                        </div>
 
                         <div class="row">
                           <div class="col-sm-8">
@@ -162,9 +162,9 @@
                                 <i class="fa fa-question-circle"></i>
                               </label>
                               <input type="text" class="form-control" name="username" placeholder="CVV" required>
-                            </div> 
+                            </div>
                           </div>
-                        </div> 
+                        </div>
                         <span>
                           <p> </p>
                         </span>
@@ -201,7 +201,7 @@
                          }
                       }
                       </script>
-                    </div> 
+                    </div>
                   </div>
                 </div>
               </div>
@@ -246,6 +246,9 @@
         <footer class="py-5 ">
           <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+            <a id="facebook" href="https://www.facebook.com/Pinelands-Music-School-172788250106273/"><img src="{% static "music_app/images/facebook.png" %}" alt="Facebook icon" height="40" />
+            <a id="twitter" href="https://twitter.com"><img src="{% static "music_app/images/twitter.png" %}" alt="Twitter icon" height="40" />
+            <a id="instagram" href="https://www.instagram.com"><img src="{% static "music_app/images/instagram.png" %}" alt="Instagram icon" height="40" />
           </div>
           <!-- /.container -->
         </footer>
@@ -255,7 +258,7 @@
         <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
         <script type="text/javascript" src="js/registration_validate.js"></script>
         <!-- Analytics script -->
-        
+
       </div>
     </section>
     {% endif %}
