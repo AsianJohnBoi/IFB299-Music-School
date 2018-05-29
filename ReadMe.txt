@@ -3,7 +3,7 @@ User: root
 Password: ifb299
 
 Requirements:
-- mySQL with mySQLWorkbench installed (make sure user or root password is 'ifb299')
+- mySQL with mySQLWorkbench installed (make sure user is root and password is 'ifb299')
 - Django 2.0.3
 - Python 3.6
 - mysqlclient
@@ -25,4 +25,3 @@ username: root
 Leave everything else by default
 
 4) Now you are ready to run the website. Type 'python3 manage.py runserver' in the terminal window then go on a web browser and type in the URL '127.0.0.1:8000/'
-
