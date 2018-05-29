@@ -6,7 +6,7 @@ Requirements:
 - mySQL with mySQLWorkbench installed (make sure user or root password is 'ifb299')
 - Django 2.0.3
 - Python 3.6
-- mysql client
+- mysqlclient
 
 1) Create an SQL database through the terminal.
 
