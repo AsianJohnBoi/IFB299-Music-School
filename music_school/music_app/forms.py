@@ -1,17 +1,18 @@
+"""
+The form to be displayed on the page, specifying the input types.
+"""
+
 from django import forms
 from music_app.models import UserProfile
-# from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 SKILLS_CHOICES = [('Beginner','Beginner'), ('Intermediate', 'Intermediate'), ('Expert', 'Expert')]
 GENDER_CHOICES = [('M', 'Male'),('F', 'Female')]
 
-
-# class UserForm(UserCreationForm):
-#     email = forms.EmailField(req)
-
+#Form used in the registration page
 class SignUpForm(forms.ModelForm):
+    #specify variables and the input type
     first_name = forms.CharField(max_length=100, required=True)
     last_name = forms.CharField(max_length=100, required=True)
     gender = forms.ChoiceField(choices=GENDER_CHOICES)
@@ -22,6 +23,8 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
+
+        #specify the fields to fill out
         fields = (
             'first_name',
             'last_name',
@@ -31,58 +34,3 @@ class SignUpForm(forms.ModelForm):
             'address',
             'skill_level',
             )
-
-    # def save(self, commit=True):
-    #     user = super(SignUpForm, self).save(commit=False)
-    #     user.first_name = self.cleaned_data['first_name']
-    #     user.last_name = self.cleaned_data['last_name']
-    #     user.age = self.cleaned_data['age']
-    #     user.address = self.cleaned_data['address']
-    #     user.gender = self.cleaned_data['gender']
-    #     user.email = self.cleaned_data['email']
-    #
-    #     if commit:
-    #         user.save()
-
-
-
-
-# class EditProfileForm(UserChangeForm):
-#     email = forms.EmailField(required=True)
-#     first_name = forms.CharField(max_length=100, required=True)
-#     last_name = forms.CharField(max_length=100, required=True)
-#     address = forms.CharField(max_length=250, required=True)
-#     age = forms.IntegerField(max_value=120, required=True)
-#     gender = forms.ChoiceField(choices=GENDER_CHOICES,required=True)
-#
-#     class Meta:
-#         model = User
-#         fields = (
-#             'email',
-#             'first_name',
-#             'last_name',
-#             'email',
-#             'address',
-#             'age',
-#             'gender',
-#             'password',
-#         )
-
-# class EditProfileForm(UserChangeForm):
-#     email = forms.EmailField(required=True)
-#     first_name = forms.CharField(max_length=100, required=True)
-#     last_name = forms.CharField(max_length=100, required=True)
-#     address = forms.CharField(max_length=250, required=True)
-#     age = forms.IntegerField(max_value=120, required=True)
-#     gender = forms.ChoiceField(choices=GENDER_CHOICES,required=True)
-
-#     class Meta:
-#         model = UserProfile
-#         fields = (
-#             'email',
-#             'first_name',
-#             'last_name',
-#             'address',
-#             'age',
-#             'gender',
-#         )

@@ -1,3 +1,7 @@
+"""
+Specifies the website application
+"""
+
 from django.apps import AppConfig
 
 

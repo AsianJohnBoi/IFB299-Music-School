@@ -1,8 +1,14 @@
+"""
+Specifies the path of each page, when clicking on a link, will redirect user. Calls functions in views.py to
+render the html page and display to the user.
+"""
+
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 from . import views
 
+#The URL paths/patterns
 urlpatterns = [
     path('', views.indexPage, name='index'),
     path('about/', views.aboutPage, name='about'),
