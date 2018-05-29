@@ -169,9 +169,6 @@
                       <td>{{item.Instrument}}</td>
                       <td>{{item.Date}}</td>
                       <td>{{item.Time|time:"H:i"}}</td>
-                       <!-- <input type="button" value={{item.Lesson_id}} onclick="getVal(this.value)"> -->
-                       <!-- <button name="checks" id="1" value={{item.Lesson_id}}> -->
-
                       <td><button name="checks" id="{{item.id}}" value="Teacher: {{item.teacher_id}}, Instrument: {{item.Instrument}}, Date: {{item.Date}}, Time: {{item.Time|time:'H:i'}}, Lesson id: {{item.Lesson_id}}" onclick="clicked(this.value, this.id)">Book Lesson</button></td>
                     </tr>
                     {% endfor %}
@@ -208,8 +205,6 @@
             </div>
           </div>
         </div>
-        <!-- /.container -->
-
         <!-- Footer -->
         <footer class="py-5 ">
           <div class="container">
@@ -218,7 +213,6 @@
             <a id="twitter" href="https://twitter.com"><img src="{% static "music_app/images/twitter.png" %}" alt="Twitter icon" height="40" />
             <a id="instagram" href="https://www.instagram.com"><img src="{% static "music_app/images/instagram.png" %}" alt="Instagram icon" height="40" />
           </div>
-          <!-- /.container -->
         </footer>
 
         <!-- Bootstrap core JavaScript -->
@@ -244,7 +238,6 @@
             </div>
           </div>
         </div>
-        <!-- /.container -->
 
         <!-- Footer -->
         <footer class="py-5 ">
@@ -254,7 +247,6 @@
             <a id="twitter" href="https://twitter.com"><img src="{% static "music_app/images/twitter.png" %}" alt="Twitter icon" height="40" />
             <a id="instagram" href="https://www.instagram.com"><img src="{% static "music_app/images/instagram.png" %}" alt="Instagram icon" height="40" />
           </div>
-          <!-- /.container -->
         </footer>
 
         <!-- Bootstrap core JavaScript -->
