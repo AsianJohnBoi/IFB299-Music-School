@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Music School</title>
+  <!-- Test For Emily -->
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="{% static 'music_app/bootstrap.css' %}" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'music_app/business-casual.css' %}" rel="stylesheet">
+  <link href="{% static 'music_app/style.css' %}" rel="stylesheet">
+
+</head>
+
+  <body>
+    <!-- Navigation -->
+    <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a id="logo" href="{% url 'index' %}"><img src="{% static "music_app/images/pinelands_logo.png" %}" alt="website logo" height="50" />
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+            </li>
+          </ul>
+        </div>
+        {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'dashboard' %}">Hi {{ user.first_name }}!</a>
+        {% else %}
+        <a class="navbar-brand" href="{% url 'signup' %}">Register</a>
+        <a class="navbar-brand" href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Intro Content -->
+      <div>
+        <h1 class="my-4">A Little About Pinelands M.S</h1>
+      </div>
+      <section class="page-section about-heading">
+        <div class="container">
+          <div class="about-heading-content">
+            <div class="row">
+              <div class="col-xl-9 col-lg-10 mx-auto">
+                <div class="bg-faded rounded p-5">
+                  <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper"></span>
+                    <span class="my-4">Our business.</span>
+                  </h2>
+
+                  <p>Located in the outskirts of Brisbane, Pinelands Music School creates
+                    leaders in music performance and composition. Our class inspire the future
+                    generation of music professionals and are recognised my professional music
+                    boards across Australia. Our very experienced and dedicated teachers endeavor
+                    to help you learn a new instrument, or enhance your already acquired skills.
+                    Pinelands Music School has now created an online booking systems where you can
+                    view your upcoming lessions and teacher feedback. So what are you waiting for? Book now!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- /.row -->
+
+      <!-- Team Members -->
+      <h2>Our Team</h2>
+      <div class="container testimonial-group">
+      <div class="row text-center">
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+            <img class="card-img-top" <img src="{% static "music_app/images/teacher1.png" %}" alt="website logo"/>
+            <div class="card-body">
+              <h4 class="card-title">Andy Garrett</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Teacher</h6>
+              <p class="card-text">Instruments: Trumpet, Clarinet</p>
+              <p class="card-text">Languages: English, French</p>
+            </div>
+            <div class="card-footer">
+              <a href="#">andy@pinelandsmusic.com.au</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+            <img class="card-img-top" <img src="{% static "music_app/images/teacher3.png" %}" alt="website logo"/>
+            <div class="card-body">
+              <h4 class="card-title">Mika Williams</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Owner/Teacher</h6>
+              <p class="card-text">Instruments: Violin, Harmonium</p>
+              <p class="card-text">Languages: English, Spanish</p>
+            </div>
+            <div class="card-footer">
+              <a href="#">mika@pinelandsmusic.com.au</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+            <img class="card-img-top" <img src="{% static "music_app/images/teacher2.png" %}" alt="website logo"/>
+            <div class="card-body">
+              <h4 class="card-title">Milly Buxton</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Teacher</h6>
+              <p class="card-text">Instruments: Piano, Voice</p>
+              <p class="card-text">Languages: English</p>
+            </div>
+            <div class="card-footer">
+              <a href="#">milly@pinelandsmusic.com.au</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+            <img class="card-img-top" <img src="{% static "music_app/images/teacher4.png" %}" alt="website logo"/>
+            <div class="card-body">
+              <h4 class="card-title">David Bernal</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Teacher</h6>
+              <p class="card-text">Instruments: Guitar, Voice</p>
+              <p class="card-text">Languages: English, Italian</p>
+            </div>
+            <div class="card-footer">
+              <a href="#">david@pinelandsmusic.com.au</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+            <img class="card-img-top" <img src="{% static "music_app/images/teacher5.png" %}" alt="website logo"/>
+            <div class="card-body">
+              <h4 class="card-title">Luke Holmes</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Teacher</h6>
+              <p class="card-text">Instruments: Percussion, Santurs</p>
+              <p class="card-text">Languages: English</p>
+            </div>
+            <div class="card-footer">
+              <a href="#">luke@pinelandsmusic.com.au</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+            <img class="card-img-top" <img src="{% static "music_app/images/teacher6.png" %}" alt="website logo"/>
+            <div class="card-body">
+              <h4 class="card-title">Caleb Dixon</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Teacher</h6>
+              <p class="card-text">Instruments: Cello, Vina</p>
+              <p class="card-text">Languages: English, German</p>
+            </div>
+            <div class="card-footer">
+              <a href="#">caleb@pinelandsmusic.com.au</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- Sub container -->
+  </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer id="Main_Footer" class="py-5">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'music_app/jquery.min.js' %}"></script>
+    <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+
+  </body>
+
+</html>
