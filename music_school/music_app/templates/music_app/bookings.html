@@ -91,10 +91,10 @@
                       {'value':'{% url 'bookings' %}', 'text':'All'},
                       {'value':'{% url 'bookings_Guitar' %}', 'text':'Guitar'},
                       {'value':'{% url 'bookings_Piano' %}', 'text':'Piano'},
-                      {'value':'{% url 'bookings_Claranet' %}', 'text':'Claranet'},
+                      {'value':'{% url 'bookings_Saxophone' %}', 'text':'Saxophone'},
                       {'value':'{% url 'bookings_Violin' %}', 'text':'Violin'},
                       {'value':'{% url 'bookings_Flute' %}', 'text':'Flute'},
-                      {'value':'{% url 'bookings_Trumpet' %}', 'text':'Trumpet'}
+                      {'value':'{% url 'bookings_Drums' %}', 'text':'Drums'}
                     ];
 
                     opts.forEach(function(obj){
@@ -111,11 +111,11 @@
                     const $select2 = $('select[name="staff_filter"]');
                     const opts2 = [
                       {'value':'{% url 'bookings' %}', 'text':'All'},
-                      {'value':'{% url 'bookings_Guitar' %}', 'text':'Mika Williams'},
-                      {'value':'{% url 'bookings_Piano' %}', 'text':'Andy Garrett'},
-                      {'value':'{% url 'bookings_Claranet' %}', 'text':'Milly Buxton'},
-                      {'value':'{% url 'bookings_Violin' %}', 'text':'David Bernal'},
-                      {'value':'{% url 'bookings_Flute' %}', 'text':'Luke Holmes'},
+                      {'value':'{% url 'bookings_Violin' %}', 'text':'Mika Williams'},
+                      {'value':'{% url 'bookings_Flute' %}', 'text':'Andy Garrett'},
+                      {'value':'{% url 'bookings_Piano' %}', 'text':'Milly Buxton'},
+                      {'value':'{% url 'bookings_Saxophone' %}', 'text':'David Bernal'},
+                      {'value':'{% url 'bookings_Drums' %}', 'text':'Luke Holmes'},
                       {'value':'{% url 'bookings_Guitar' %}', 'text':'Caleb Dixon'},
                     ];
 

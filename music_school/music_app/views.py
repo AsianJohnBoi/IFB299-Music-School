@@ -108,7 +108,7 @@ def bookingsPage(request):
 
             for x in range(0, 16): #lesson times, 10am to 6pm, 1 to 16 lessons
                 timeChosen = timelist[x]
-                for x in range (1, 6):
+                for x in range (0, 6):
                     instrumentChosen = instrumentlist[x]
                     teacherChosen = teacherslist[x]
                     languageChosen = 'English'
@@ -161,9 +161,9 @@ def bookings_Piano(request):
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
 @csrf_exempt
-def bookings_Claranet(request):
+def bookings_Saxophone(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Claranet", Booked="NO")
+        data_list = schedule.objects.filter(Instrument="Saxophone", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
@@ -249,9 +249,9 @@ def bookings_Guitar(request):
             return JsonResponse({'status':'error', 'message': 'Invalid shcedule id'})
 
 @csrf_exempt
-def bookings_Trumpet(request):
+def bookings_Drums(request):
     if (request.method == 'GET'):
-        data_list = schedule.objects.filter(Instrument="Trumpet", Booked="NO")
+        data_list = schedule.objects.filter(Instrument="Drums", Booked="NO")
         context = {'data_list':data_list }
         return render(request, 'music_app/bookings.html', context)
 
