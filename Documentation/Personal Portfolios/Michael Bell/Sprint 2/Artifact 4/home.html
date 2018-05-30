@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Music School</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="{% static 'music_app/bootstrap.css' %}" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'music_app/business-casual.css' %}" rel="stylesheet">
+  <link href="{% static 'music_app/style.css' %}" rel="stylesheet">
+
+</head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a id="logo" href="{% url 'index' %}"><img src="{% static "music_app/images/pinelands_logo.png" %}" alt="website logo" height="50" />
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+            </li>
+          </ul>
+        <div>
+        {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'dashboard' %}">Hi {{ user.first_name }}!</a>
+        {% else %}
+        <a class="navbar-brand" href="{% url 'signup' %}">Register</a>
+        <a class="navbar-brand" href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="main_container" class="container">
+      <div>
+        <span>
+      <h1 class="my-4">WELCOME TO THE FAMILY</h1>
+      </div>
+      <!-- Marketing Icons Section -->
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Location</h4>
+            <div class="card-body">
+              <p class="card-text">Our lessons can take place in a range of locations to cater to both you and your teacher. We want you to feel comfortable and think us as less of a school and more of an opportunity.</p>
+            </div>
+            <div class="card-footer">
+              <a href="{% url 'about' %}" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Opportunities</h4>
+            <div class="card-body">
+              <p class="card-text">Consider this the start or your musical journey! We will nurture you as one of our very own and help you reach your full potential. </p>
+            </div>
+            <div class="card-footer">
+              <a href="{% url 'about' %}" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">Performances</h4>
+            <div class="card-body">
+              <p class="card-text">Are you an avid performer or looking to be one...? Many of our students participate in a wide range of competitions and so can you.</p>
+            </div>
+            <div class="card-footer">
+              <a href="{% url 'about' %}" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="page-section about-heading">
+        <div class="container">
+          <div class="about-heading-content">
+            <div class="row">
+              <div class="col-xl-9 col-lg-10 mx-auto">
+                <div class="bg-faded rounded p-5">
+                  <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper"></span>
+                    <span class="my-4">UNLOCK YOUR TRUE POTENTIAL</span>
+                  </h2>
+                  <p>Find what lights your spark! Whether that be an instrument, performing, song writing or even just listening to the sweet harmonious sounds we can help you to create.
+                    There is something for everyone at Pinelands and we encourage all to explore their passions and find what drives them as artists.
+                    We have years of experience behind us having been the in the industry for a lifetime we appreciate music and what it can do for us and others. </p>
+                  <p class="mb-0">Whether you are a novice or a regular performer on the main stage we have a memeber of staff for everyone to help you grow and reach all your goals you aspire to.
+                  Our flexible class times allow us to work around you, no lock in fees or contracts. Instead let the music take you and find your own path, take up a new instrument try a new teacher.
+                  The musical world is your oyster... So why wait? Come join our family!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Testimonials Section -->
+      <h1 class="my-4">TESTIMONIALS</h1>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"Loved every minute of the class! Such a wealth of knowledge from these truly experienced teachers."</p>
+            </div>
+            <div class="card-footer">
+              <p class="card-text">Harper</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"Wow!! All I can say is what great teaching staff, my child came back smiling from ear to ear!"</p>
+            </div>
+            <div class="card-footer">
+              <p class="card-text">Roland</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">I have never felt more comfortable being a beginner at an instrument. Pinelands has given me the confidenece to achieve my musical goals."</p>
+            </div>
+            <div class="card-footer">
+              <p class="card-text">Kelly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"I have had saxophone lessons at Pinelands Music School for about one year now and I find Wayne, my teacher, highly inspirational. The atmosphere at Pinelands Music School is very comfortable while the helpful staff are always keen to answer any questions."</p>
+            </div>
+            <div class="card-footer">
+              <p class="card-text">Xue</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"I used to think that I could learn much more by myself than with a teacher taking lessons. But I learnt more in just one guitar lesson with Pinelands Music than I did the whole time I had my guitar!"</p>
+            </div>
+            <div class="card-footer">
+              <p class="card-text">Alex</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">"Pinelands Music School has a lot of good elements like friendly teachers, good location and a pleasant and supportive atmosphere that some other places don't have collectively."</p>
+            </div>
+            <div class="card-footer">
+              <p class="card-text">Jeanette</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- /.ontainer -->
+    <!-- Footer -->
+    <footer id="Main_Footer" class="py-5 ">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+        <a id="facebook" href="https://www.facebook.com/Pinelands-Music-School-172788250106273/"><img src="{% static "music_app/images/facebook.png" %}" alt="Facebook icon" height="40" />
+        <a id="twitter" href="https://twitter.com"><img src="{% static "music_app/images/twitter.png" %}" alt="Twitter icon" height="40" />
+        <a id="instagram" href="https://www.instagram.com"><img src="{% static "music_app/images/instagram.png" %}" alt="Instagram icon" height="40" />
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'music_app/jquery.min.js' %}"></script>
+    <script src="{% static 'music_app/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Analytics script -->
+    <!-- This is where the google analytics script will be placed in order for the system to implement its steps of retrieving requested and relevant data for the admins to analyse and asses. Having this script on the site will allow the admins access all data retrieved from the site via their respective google analytics accounts, and enables them to track website benchmarking information. Through this they will be able to track the measure site traffic, conversions, ad performance and how users are interacting with the site and its interface. For google analytics to be run with this site, google analytics must have access to a live web browser which we do not have at this current time. Therefore we have described below how it will work, where the required script will be placed in the code and what data is being collected -->
+
+    <!--Google analytics retrieves this data through following a process of four main components which give a greater understanding as to how the analytics system works. These four main components being data collection, configuration, data processing and then the reporting of the data in various modes. The small snippet of javascript as described above is used and applied to all pages that the admin request or require data to be collected from. When a user accesses the site the code then comes alive and will begin the collection of data. This data can be on how the user interacts with the site this includes browser data, data collected from url. The data retrieved from the URL is in relation to whether the user is accessing the site from a mobile device, iphone, mac etc. Also what content is viewed and for how long is also tracked, as well as what site referred them to now accessing this particular site. -->
+
+    <!--All information is then pushed to google analytics servers and awaits processing. Google looks at each piece of data as an interaction or a hit, which it is more commonly referred to as. Each time a user access a new page on the site the server is then updated with the most recent activity and information. Once google has collected all relevant information from that particular user, the data is then processed, which can take between 4-24 hours.-->
+
+  </body>
+
+</html>

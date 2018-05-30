@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Music School Portal</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="{% static 'music_app/bootstrap.css' %}" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'music_app/business-casual.css' %}" rel="stylesheet">
+  <link href="{% static 'music_app/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+    {% if user.is_authenticated %}
+    <nav id="Nav_style" class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a id="logo" href="{% url 'index' %}"><img src="{% static "music_app/images/pinelands_logo.png" %}" alt="website logo" height="50" />
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookings' %}">Bookings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'lessons' %}">Lessons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'instrument' %}">Instruments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account' %}">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../accounts/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Page Content -->
+    <div class="container">
+    <div>
+      <h1 class="my-4">Dashboard</h1>
+    </div>
+    <div class="row" height:350px;">
+      <div class="col-lg-4 mb-4" style="overflow-y:scroll; overflow-x:hidden; height:350px;">
+        <div class="card h-100">
+          <h3 class="card-header">Announcements</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Instrumental Hire for the Term is Now Available</li>
+            <li class="list-group-item">There will still be lessons as per normal despite the Public Holiday on the 25th</li>
+            <li class="list-group-item">New Staff will be joining us this term!! Keep your eyes peeled!</li>
+            <li class="list-group-item">Any overdue fees from last term will need to be paid by the end of this week.</li>
+            <li class="list-group-item">Portal outage - this Friday the 6th we will have a portal outage as it undergoes an upgrade</li>
+            <li class="list-group-item">Our classes for the term are starting to book out make sure you don't miss out!!</li>
+            <li class="list-group-item">Anyone interested in an upcoming competition there will be an e-mail sent out this week with a sign up link</li>
+            <li class="list-group-item">Ensure all your account details are up to date for the new term</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4"  style="overflow-y:scroll; overflow-x:hidden; height:350px;">
+        <div class="card card-outline-primary h-100">
+          <h3 class="card-header">Recent Feedback</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Well done {{ user.first_name }}! You have improved a lot since our previous lesson. Keep practising! - Andy</li>
+            <li class="list-group-item">Great lesson {{ user.first_name }}, if you can learn what we discused during our lessen before next week that would be great. - Andy</li>
+            <li class="list-group-item">I really enjoyed teaching you {{ user.first_name }}! WOuld love to have you back again! - Milly</li>
+            <li class="list-group-item"></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4" style="overflow-y:scroll; overflow-x:hidden; height:350px;">
+        <div class="card h-100">
+          <h3 class="card-header">Upcoming Lessons</h3>
+          <ul class="list-group list-group-flush">
+            {% for item in user_bookings %}
+            <li class="list-group-item"><a href="..\lessons">{{item.schedule.Instrument}} - {{item.schedule.Date}}, {{item.schedule.Time|time:"H:i"}}</a></li>
+            </li>
+
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /.row one -->
+  </div>
+
+  <div class="container">
+    <div class="about-heading-content">
+      <div class="row">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded rounded p-5">
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-upper"></span>
+              <span class="my-4">Teacher Contact Information</span>
+
+            </h2>
+              </script>
+              <table style="width: 100%"">
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                </tr>
+                <tr>
+                  <td>Mika Williams</td>
+                  <td><a href="mailto:mika@pinelandsmusic.com.au"> mika@pinelandsmusic.com.au</td>
+                  <td>0490 390 312</td>
+                  </tr>
+                <tr>
+                  <td>Andy Garrett</td>
+                  <td><a href="mailto:andy@pinelandsmusic.com.au"> andy@pinelandsmusic.com.au</td>
+                  <td>0454 346 304</td>
+                </tr>
+                <tr>
+                  <td>Milly Buxton</td>
+                  <td><a href="mailto:milly@pinelandsmusic.com.au"> milly@pinelandsmusic.com.au</td>
+                  <td>0412 394 691</td>
+                  </tr>
+                <tr>
+                  <td>David Bernal</td>
+                  <td><a href="mailto:david@pinelandsmusic.com.au"> david@pinelandsmusic.com.au</td>
+                  <td>0412 983 657</td>
+                </tr>
+                <tr>
+                  <td>Luke Holmes</td>
+                  <td><a href="mailto:luke@pinelandsmusic.com.au"> luke@pinelandsmusic.com.au</td>
+                  <td>0489 094 986</td>
+                  </tr>
+                <tr>
+                  <td>Caleb Dixon</td>
+                  <td><a href="mailto:caleb@pinelandsmusic.com.au"> caleb@pinelandsmusic.com.au</td>
+                  <td>0456 689 234</td>
+                </tr>
+
+              </table>
+
+            </div>
+            <br />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  <!-- Footer -->
+  <footer id="Main_Footer" class="py-5 ">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+      <a id="facebook" href="https://www.facebook.com/Pinelands-Music-School-172788250106273/"><img src="{% static "music_app/images/facebook.png" %}" alt="Facebook icon" height="40" />
+      <a id="twitter" href="https://twitter.com"><img src="{% static "music_app/images/twitter.png" %}" alt="Twitter icon" height="40" />
+      <a id="instagram" href="https://www.instagram.com"><img src="{% static "music_app/images/instagram.png" %}" alt="Instagram icon" height="40" />
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'music_app/jquery.min.js' %}"></script>
+  <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+  <script type="text/javascript" src="js/registration_validate.js"></script>
+      </div>
+    </section>
+  {% else %}
+  <section class="page-section about-heading">
+      <div class="container">
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper"></span>
+                  <p>Unauthorised!</p>
+                  <p>Please <a href="{% url 'login'%}?next={{request.path}}"><u>Log In</u></a> to view this page<p>
+                  <!-- Contact Form -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <footer class="py-5 ">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Pink Spoon 2018</p>
+            <a id="facebook" href="https://www.facebook.com/Pinelands-Music-School-172788250106273/"><img src="{% static "music_app/images/facebook.png" %}" alt="Facebook icon" height="40" />
+            <a id="twitter" href="https://twitter.com"><img src="{% static "music_app/images/twitter.png" %}" alt="Twitter icon" height="40" />
+            <a id="instagram" href="https://www.instagram.com"><img src="{% static "music_app/images/instagram.png" %}" alt="Instagram icon" height="40" />
+          </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'music_app/jquery.min.js'%}"></script>
+        <script src="{% static 'music_app/bootstrap.bundle.min.js'%}"></script>
+        <script type="text/javascript" src="js/registration_validate.js"></script>
+        <!-- Analytics script -->
+
+      </div>
+    </section>
+  {% endif %}
+</body>
+
+</html>
