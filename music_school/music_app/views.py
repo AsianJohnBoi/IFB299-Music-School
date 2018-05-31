@@ -128,7 +128,7 @@ def bookingsPage(request):
         #Gets current date
         today = date.today()
 
-        #Gets the date after 14 days of variable 'today'
+        #Gets the date after 7 days of variable 'today'
         end_date = today + timedelta(7)
         bookedString = 'NO'
 

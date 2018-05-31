@@ -79,11 +79,12 @@
                       <th>Lesson Time</th>
                       <th>Cancel</th>
                     </tr>
-                    {% for item in user_bookings %}
+                    {% for item in user_bookings %} /* gets each row data from the bookings table */
                     <tr>
-                      <td>{{item.schedule.Instrument}}</td>
-                      <td>{{item.schedule.Date}}</td>
-                      <td>{{item.schedule.Time|time:"H:i"}}</td>
+                      <td>{{item.schedule.Instrument}}</td> /* gets current row's instrument column and displays it */
+                      <td>{{item.schedule.Date}}</td> /* gets current row's date column and displays it */
+                      <td>{{item.schedule.Time|time:"H:i"}}</td> 
+                      <!-- Create button's id and give it the value of the the row data to be displayed for confirmation in javascript alert -->
                       <td><button id="{{item.schedule.id}}" value="Teacher: {{item.schedule.teacher_id}}, Instrument: {{item.schedule.Instrument}}, Date: {{item.schedule.Date}}, Time: {{item.schedule.Time|time:'H:i'}}, Lesson id: {{item.schedule.Lesson_id}}"onclick="clicked(this.value, this.id)">Cancel Lesson</button></td>
                     </tr>
                     {% endfor %}
@@ -94,23 +95,23 @@
                   </p>
                   </span>
                   <script type="text/javascript">
-                  function clicked(value, id) {
+                  function clicked(value, id) { //Gets value and id of clicked button
                      if (confirm('Confirm Cancellation? \n \n' + value + '\n\nYou will receive a cancellation fee if lesson is cancelled less than 24 hours prior lesson')) {
-                        $.ajax({'type': 'POST',
-                                'url': '/music_app/lessons/',
-                                 'data': {'id': id},
+                        $.ajax({'type': 'POST', //sets request type as 'POST' when calls lessonsPage function in views.py
+                                'url': '/music_app/lessons/', //Calls the lessonsPage function in views.py choosing the else if statement 'POST'
+                                 'data': {'id': id}, //Passing id to the lessonsPage function
                                  'success': function(resp) {
-                                      if(resp.status == 'ok') {
+                                      if(resp.status == 'ok') { //lessonPage function respond to request, if all values given are ok, and has updated database
                                         alert('Lesson cancelled');
                                       }
                                       else {
-                                         alert(resp.message);
+                                         alert(resp.message); //display error message saying that the id doesn't match any database record
                                       }
                                   }
                                 });
-                      location.reload();
+                      location.reload(); //Reload page after cancellation
                      } else {
-                         return false;
+                         return false; //User doesn't confirm cancellation, don't do anything
                      }
                   }
                   </script>
